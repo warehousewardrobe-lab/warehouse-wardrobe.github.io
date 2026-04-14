@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Warehouse Wardrobe — The Digital Curator</title>
+<meta name="description" content="Sydney's insider guide to warehouse fashion sales, pop-ups and archival drops. Follow @warehouse.wardrobe on Instagram and TikTok."/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#7a0412",
+        "primary-container": "#9b2226",
+        "on-primary": "#ffffff",
+        "on-primary-container": "#ffb0ab",
+        "primary-fixed": "#ffdad7",
+        "surface": "#fcf9f8",
+        "surface-container-low": "#f6f3f2",
+        "surface-container": "#f0eded",
+        "surface-container-high": "#eae7e7",
+        "surface-container-highest": "#e5e2e1",
+        "on-surface": "#1c1b1b",
+        "secondary": "#6a5d43",
+        "on-secondary-container": "#6e6147",
+        "outline-variant": "#e0bfbc",
+        "background": "#fcf9f8",
+      },
+      fontFamily: {
+        headline: ["Newsreader", "serif"],
+        body: ["Manrope", "sans-serif"],
+        label: ["Manrope", "sans-serif"],
+      },
+      borderRadius: {
+        DEFAULT: "0.125rem",
+        lg: "0.25rem",
+        xl: "0.75rem",
+        full: "9999px",
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Manrope', sans-serif; background: #fcf9f8; color: #1c1b1b; }
+  h1, h2, h3, h4, .serif { font-family: 'Newsreader', serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+
+  /* Nav glass */
+  .glass-nav {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background: rgba(252, 249, 248, 0.85);
+  }
+
+  /* Fade-in on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* Staggered hero text */
+  @keyframes heroFade {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .hero-line-1 { animation: heroFade 0.8s cubic-bezier(.4,0,.2,1) 0.1s both; }
+  .hero-line-2 { animation: heroFade 0.8s cubic-bezier(.4,0,.2,1) 0.3s both; }
+  .hero-line-3 { animation: heroFade 0.8s cubic-bezier(.4,0,.2,1) 0.5s both; }
+  .hero-line-4 { animation: heroFade 0.8s cubic-bezier(.4,0,.2,1) 0.65s both; }
+
+  /* Input line style */
+  .line-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(224,191,188,0.4);
+    outline: none;
+    padding: 12px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1c1b1b;
+    width: 100%;
+    transition: border-color 0.3s;
+  }
+  .line-input::placeholder { color: #8c716e; }
+  .line-input:focus { border-bottom-color: #7a0412; }
+
+  .line-input-white {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    outline: none;
+    padding: 12px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    width: 100%;
+    transition: border-color 0.3s;
+  }
+  .line-input-white::placeholder { color: rgba(255,255,255,0.45); }
+  .line-input-white:focus { border-bottom-color: rgba(255,255,255,0.9); }
+
+  /* Photo grid hover */
+  .photo-item img { transition: transform 0.6s cubic-bezier(.4,0,.2,1); }
+  .photo-item:hover img { transform: scale(1.06); }
+  .photo-item .overlay { transition: opacity 0.4s; opacity: 0; }
+  .photo-item:hover .overlay { opacity: 1; }
+
+  /* Event row hover */
+  .event-row { transition: background 0.2s; }
+  .event-row:hover { background: #eae7e7; }
+  .event-row:hover .event-title { font-style: italic; }
+
+  /* Ticker */
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ticker-inner { animation: ticker 22s linear infinite; display: flex; white-space: nowrap; }
+  .ticker-inner:hover { animation-play-state: paused; }
+
+  /* Logo SVG crimson */
+  .ww-logo { filter: drop-shadow(0 0 0 transparent); }
+
+  /* Grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Mobile nav bottom */
+  @media (max-width: 768px) {
+    body { padding-bottom: 80px; }
+  }
+
+  /* Highlight card */
+  .highlight-card { transition: transform 0.3s cubic-bezier(.4,0,.2,1); }
+  .highlight-card:hover { transform: translateY(-4px); }
+
+  /* Chip */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 14px;
+    border-radius: 9999px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .chip-limited { background: rgba(122,4,18,0.1); color: #7a0412; }
+  .chip-waitlist { background: rgba(106,93,67,0.12); color: #6a5d43; }
+  .chip-public { background: rgba(0,89,107,0.1); color: #00404e; }
+  .chip-free { background: rgba(0,89,107,0.1); color: #00404e; }
+</style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════ NAV ═══════════════════════════════ -->
+<nav class="fixed top-0 w-full z-50 glass-nav flex items-center justify-between px-6 lg:px-16 h-16">
+  <button class="md:hidden text-secondary" aria-label="Menu">
+    <span class="material-symbols-outlined" style="font-size:22px;">menu</span>
+  </button>
+
+  <!-- Logo wordmark -->
+  <a href="#" class="absolute left-1/2 -translate-x-1/2 flex items-center gap-2 no-underline">
+    <!-- Inline WW logo SVG derived from uploaded logo mark -->
+    <svg width="32" height="20" viewBox="0 0 120 76" fill="none" xmlns="http://www.w3.org/2000/svg" class="ww-logo">
+      <path d="M8 12 C14 8, 20 28, 26 22 C32 16, 34 36, 40 30 C46 24, 50 44, 58 38" stroke="#7a0412" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <path d="M54 38 C60 32, 66 52, 72 46 C78 40, 80 60, 86 54 C92 48, 96 64, 104 58" stroke="#7a0412" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </svg>
+    <span class="font-headline tracking-[0.18em] uppercase text-sm font-bold text-primary hidden sm:block">Warehouse Wardrobe</span>
+  </a>
+
+  <div class="hidden md:flex items-center gap-8 ml-auto">
+    <a href="#events" class="font-label text-[10px] uppercase tracking-[0.18em] text-secondary hover:text-primary transition-colors">Events</a>
+    <a href="#gallery" class="font-label text-[10px] uppercase tracking-[0.18em] text-secondary hover:text-primary transition-colors">Gallery</a>
+    <a href="#alerts" class="font-label text-[10px] uppercase tracking-[0.18em] text-secondary hover:text-primary transition-colors">Alerts</a>
+    <a href="#tip" class="font-label text-[10px] uppercase tracking-[0.18em] text-secondary hover:text-primary transition-colors">Tip Us</a>
+  </div>
+
+  <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener" class="hidden md:flex items-center gap-1.5 ml-8 font-label text-[10px] tracking-widest uppercase text-primary border border-primary/20 px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+    <span class="material-symbols-outlined" style="font-size:13px;">photo_camera</span>Follow
+  </a>
+
+  <!-- Mobile search -->
+  <button class="md:hidden text-secondary ml-auto" aria-label="Search">
+    <span class="material-symbols-outlined" style="font-size:22px;">search</span>
+  </button>
+</nav>
+
+<!-- ═══════════════════════════════ TICKER ═══════════════════════════════ -->
+<div class="mt-16 bg-primary overflow-hidden py-2.5">
+  <div class="ticker-inner">
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Sydney Warehouse Sales</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Pop-Ups &amp; Events</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Archival Drops</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">@warehouse.wardrobe</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Sydney Warehouse Sales</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Pop-Ups &amp; Events</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Archival Drops</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">@warehouse.wardrobe</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+<section class="relative w-full min-h-[88vh] flex items-center bg-surface overflow-hidden px-6 lg:px-20 py-20">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center w-full max-w-7xl mx-auto">
+
+    <!-- Text -->
+    <div class="z-10">
+      <p class="hero-line-1 font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-8">Sydney · The Digital Curator</p>
+      <h1 class="hero-line-2 font-headline text-[clamp(3.2rem,7vw,6.5rem)] italic leading-[1.05] text-on-surface mb-6">
+        Your insider guide to<br/>
+        <span class="text-primary not-italic">warehouse<br/>fashion sales</span>
+      </h1>
+      <p class="hero-line-3 font-body text-secondary text-base lg:text-lg max-w-sm leading-relaxed mb-10">
+        We hunt down Sydney's best fashion warehouse sales and post them before they sell out. Style is found in the hunt.
+      </p>
+      <div class="hero-line-4 flex flex-wrap gap-4">
+        <a href="#events" class="bg-primary text-white px-8 py-3.5 font-label text-[10px] tracking-[0.2em] uppercase rounded-lg hover:bg-primary-container transition-all duration-300">
+          Upcoming Events
+        </a>
+        <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener" class="border border-primary/25 text-primary px-8 py-3.5 font-label text-[10px] tracking-[0.2em] uppercase rounded-lg hover:border-primary transition-all duration-300 flex items-center gap-2">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          @warehouse.wardrobe
+        </a>
+      </div>
+    </div>
+
+    <!-- Hero image editorial -->
+    <div class="relative hidden lg:block">
+      <!-- Large portrait placeholder — replace src with your own photo -->
+      <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-surface-container-high">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=800&q=80" alt="Fashion editorial" class="w-full h-full object-cover" onerror="this.style.display='none'"/>
+        <!-- Fallback editorial block if image fails -->
+        <div class="absolute inset-0 flex items-end p-8 bg-gradient-to-t from-on-surface/60 to-transparent">
+          <div>
+            <p class="font-label text-[9px] uppercase tracking-widest text-white/70 mb-1">Editor's Pick</p>
+            <p class="font-headline text-xl italic text-white">The Warehouse<br/>Edit — SS25</p>
+          </div>
+        </div>
+      </div>
+      <!-- Floating card -->
+      <div class="absolute -bottom-6 -left-10 bg-surface p-5 rounded-xl shadow-[0_24px_48px_-8px_rgba(28,27,27,0.09)] max-w-[200px]">
+        <p class="font-label text-[8px] uppercase tracking-widest text-primary mb-2">Next Sale</p>
+        <p class="font-headline text-lg italic text-on-surface leading-tight">Glue Store<br/>Warehouse Sale</p>
+        <p class="font-body text-[11px] text-secondary mt-2">19 Apr · Alexandria</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ HOW IT WORKS ═══════════════════════════════ -->
+<section class="bg-surface-container-low py-16 px-6 lg:px-20 reveal">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-20">
+    <div class="flex-shrink-0">
+      <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-3">How it works</p>
+      <h2 class="font-headline text-3xl lg:text-4xl italic text-on-surface max-w-xs leading-tight">The Hunt is the Point</h2>
+    </div>
+    <div class="w-px h-16 bg-outline-variant hidden md:block flex-shrink-0"></div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 flex-1">
+      <div>
+        <span class="font-headline text-4xl text-primary/20 block mb-2">01</span>
+        <p class="font-label text-[10px] uppercase tracking-widest text-secondary mb-1">We Scout</p>
+        <p class="font-body text-sm text-secondary leading-relaxed">We track down Sydney's best warehouse sales, sample events and pop-ups before they go public.</p>
+      </div>
+      <div>
+        <span class="font-headline text-4xl text-primary/20 block mb-2">02</span>
+        <p class="font-label text-[10px] uppercase tracking-widest text-secondary mb-1">We Post First</p>
+        <p class="font-body text-sm text-secondary leading-relaxed">Every drop lands on our Instagram &amp; TikTok before it sells out — follow us to be first in line.</p>
+      </div>
+      <div>
+        <span class="font-headline text-4xl text-primary/20 block mb-2">03</span>
+        <p class="font-label text-[10px] uppercase tracking-widest text-secondary mb-1">You Score</p>
+        <p class="font-body text-sm text-secondary leading-relaxed">Designer pieces at warehouse prices. The thrill is in the find — and the savings are very real.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ UPCOMING EVENTS ═══════════════════════════════ -->
+<section id="events" class="py-24 px-6 lg:px-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-end justify-between mb-16 reveal">
+      <div>
+        <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-3">Seasonal Access</p>
+        <h2 class="font-headline text-5xl lg:text-6xl text-on-surface">Upcoming<br/>Events</h2>
+      </div>
+      <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener" class="hidden md:flex font-label text-[9px] uppercase tracking-widest text-secondary hover:text-primary transition-colors items-center gap-1">
+        View Calendar <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+      </a>
+    </div>
+
+    <div class="flex flex-col gap-0 reveal reveal-delay-1">
+
+      <!-- Event 1 -->
+      <div class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
+        <div class="flex items-center gap-10 md:gap-16">
+          <div class="text-center min-w-[52px]">
+            <span class="block font-headline text-3xl text-primary">19</span>
+            <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Apr</span>
+          </div>
+          <div>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Glue Store Warehouse Sale</h4>
+            <p class="font-body text-sm text-secondary mt-0.5">Alexandria, NSW · 9am–5pm</p>
+          </div>
+        </div>
+        <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
+          <span class="chip chip-free">Free Entry</span>
+          <span class="material-symbols-outlined text-primary" style="font-size:18px;">arrow_forward</span>
+        </div>
+      </div>
+
+      <div class="h-px bg-outline-variant/30 mx-6"></div>
+
+      <!-- Event 2 -->
+      <div class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
+        <div class="flex items-center gap-10 md:gap-16">
+          <div class="text-center min-w-[52px]">
+            <span class="block font-headline text-3xl text-primary">26</span>
+            <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Apr</span>
+          </div>
+          <div>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Designer Sample Sale</h4>
+            <p class="font-body text-sm text-secondary mt-0.5">Marrickville, NSW · 10am–4pm · Entry $5</p>
+          </div>
+        </div>
+        <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
+          <span class="chip chip-limited">Limited Entry</span>
+          <span class="material-symbols-outlined text-primary" style="font-size:18px;">arrow_forward</span>
+        </div>
+      </div>
+
+      <div class="h-px bg-outline-variant/30 mx-6"></div>
+
+      <!-- Event 3 -->
+      <div class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
+        <div class="flex items-center gap-10 md:gap-16">
+          <div class="text-center min-w-[52px]">
+            <span class="block font-headline text-3xl text-primary">3</span>
+            <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">May</span>
+          </div>
+          <div>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Showroom Clearance — Surry Hills</h4>
+            <p class="font-body text-sm text-secondary mt-0.5">Surry Hills, NSW · 10am–3pm · Invite Only</p>
+          </div>
+        </div>
+        <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
+          <span class="chip chip-waitlist">Waitlist Open</span>
+          <span class="material-symbols-outlined text-primary" style="font-size:18px;">arrow_forward</span>
+        </div>
+      </div>
+
+      <div class="h-px bg-outline-variant/30 mx-6"></div>
+
+      <!-- Event 4 -->
+      <div class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
+        <div class="flex items-center gap-10 md:gap-16">
+          <div class="text-center min-w-[52px]">
+            <span class="block font-headline text-3xl text-primary">10</span>
+            <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">May</span>
+          </div>
+          <div>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Autumn Archive Drop</h4>
+            <p class="font-body text-sm text-secondary mt-0.5">Newtown, NSW · 11am–5pm</p>
+          </div>
+        </div>
+        <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
+          <span class="chip chip-public">Public Sale</span>
+          <span class="material-symbols-outlined text-primary" style="font-size:18px;">arrow_forward</span>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-10 text-center reveal reveal-delay-2">
+      <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener" class="font-label text-[10px] uppercase tracking-widest text-primary border-b border-primary/30 pb-0.5 hover:border-primary transition-colors">
+        Follow on Instagram for live updates →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SOCIAL GALLERY ═══════════════════════════════ -->
+<section id="gallery" class="py-24 px-6 lg:px-20 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-16 reveal">
+      <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-4">Curation Gallery</p>
+      <h2 class="font-headline text-4xl lg:text-5xl italic text-on-surface">Latest from @warehouse.wardrobe</h2>
+    </div>
+
+    <!-- Staggered grid — replace images with your actual content -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5 reveal reveal-delay-1">
+      <div class="photo-item aspect-[3/4] relative rounded-xl overflow-hidden bg-surface-container-high cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=600&q=80" alt="Warehouse sale find" class="w-full h-full object-cover" onerror="this.parentNode.style.background='#eae7e7'"/>
+        <div class="overlay absolute inset-0 bg-primary/25 flex items-end p-4">
+          <span class="font-label text-[9px] uppercase tracking-widest text-white">View Post</span>
+        </div>
+      </div>
+      <div class="photo-item aspect-[3/4] relative rounded-xl overflow-hidden bg-surface-container-high cursor-pointer lg:mt-10">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600&q=80" alt="Fashion haul" class="w-full h-full object-cover" onerror="this.parentNode.style.background='#eae7e7'"/>
+        <div class="overlay absolute inset-0 bg-primary/25 flex items-end p-4">
+          <span class="font-label text-[9px] uppercase tracking-widest text-white">View Post</span>
+        </div>
+      </div>
+      <div class="photo-item aspect-[3/4] relative rounded-xl overflow-hidden bg-surface-container-high cursor-pointer">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?w=600&q=80" alt="Designer pieces" class="w-full h-full object-cover" onerror="this.parentNode.style.background='#eae7e7'"/>
+        <div class="overlay absolute inset-0 bg-primary/25 flex items-end p-4">
+          <span class="font-label text-[9px] uppercase tracking-widest text-white">View Post</span>
+        </div>
+      </div>
+      <div class="photo-item aspect-[3/4] relative rounded-xl overflow-hidden bg-surface-container-high cursor-pointer lg:mt-10">
+        <img src="https://images.unsplash.com/photo-1516762689617-e1cffcef479d?w=600&q=80" alt="Style editorial" class="w-full h-full object-cover" onerror="this.parentNode.style.background='#eae7e7'"/>
+        <div class="overlay absolute inset-0 bg-primary/25 flex items-end p-4">
+          <span class="font-label text-[9px] uppercase tracking-widest text-white">View Post</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-12 flex justify-center gap-6 reveal reveal-delay-2">
+      <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener" class="flex items-center gap-2 border border-primary/20 text-primary px-7 py-3 rounded-full font-label text-[10px] uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.tiktok.com/@warehouse.wardrobe" target="_blank" rel="noopener" class="flex items-center gap-2 border border-primary/20 text-primary px-7 py-3 rounded-full font-label text-[10px] uppercase tracking-widest hover:bg-primary hover:text-white transition-all duration-300">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.2 8.2 0 004.79 1.53V6.76a4.85 4.85 0 01-1.02-.07z"/></svg>
+        TikTok
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PAST HIGHLIGHTS ═══════════════════════════════ -->
+<section class="py-24 px-6 lg:px-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="mb-16 reveal">
+      <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-3">Archive</p>
+      <h2 class="font-headline text-5xl lg:text-6xl text-on-surface">Past<br/>Highlights</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 reveal reveal-delay-1">
+
+      <!-- Highlight 1 -->
+      <div class="highlight-card rounded-xl overflow-hidden bg-surface-container-low">
+        <div class="aspect-[4/3] overflow-hidden bg-surface-container-high">
+          <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=700&q=80" alt="Glue Store Event" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.parentNode.style.background='#eae7e7'"/>
+        </div>
+        <div class="p-6">
+          <p class="font-label text-[9px] uppercase tracking-widest text-primary mb-2">Feb 2025 · Alexandria</p>
+          <h3 class="font-headline text-xl italic text-on-surface mb-2">Glue Store End-of-Season Clear</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">200+ followers turned up. Designer denim from $40. The line was around the block before 9am.</p>
+        </div>
+      </div>
+
+      <!-- Highlight 2 -->
+      <div class="highlight-card rounded-xl overflow-hidden bg-surface-container-low">
+        <div class="aspect-[4/3] overflow-hidden bg-surface-container-high">
+          <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=700&q=80" alt="Sample Sale" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.parentNode.style.background='#eae7e7'"/>
+        </div>
+        <div class="p-6">
+          <p class="font-label text-[9px] uppercase tracking-widest text-primary mb-2">Mar 2025 · Newtown</p>
+          <h3 class="font-headline text-xl italic text-on-surface mb-2">The Winter Archive Drop</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">Local labels, knitwear, outerwear. Everything under $80. Sold out in three hours.</p>
+        </div>
+      </div>
+
+      <!-- Highlight 3 -->
+      <div class="highlight-card rounded-xl overflow-hidden bg-surface-container-low">
+        <div class="aspect-[4/3] overflow-hidden bg-surface-container-high">
+          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=700&q=80" alt="Pop-up Event" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" onerror="this.parentNode.style.background='#eae7e7'"/>
+        </div>
+        <div class="p-6">
+          <p class="font-label text-[9px] uppercase tracking-widest text-primary mb-2">Apr 2025 · Surry Hills</p>
+          <h3 class="font-headline text-xl italic text-on-surface mb-2">Private Showroom Pop-Up</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">Invite-only. Curated pieces from 12 Sydney labels. The most intimate sale we've hosted.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SALE ALERTS SIGNUP ═══════════════════════════════ -->
+<section id="alerts" class="py-24 px-6 lg:px-20">
+  <div class="max-w-7xl mx-auto">
+    <div class="bg-primary rounded-xl overflow-hidden relative p-12 lg:p-20 reveal">
+      <!-- Subtle texture -->
+      <div class="absolute inset-0 opacity-5" style="background-image: repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%); background-size: 12px 12px;"></div>
+
+      <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-[0.4em] text-white/60 mb-5">Direct to Inbox</p>
+          <h2 class="font-headline text-5xl lg:text-6xl italic text-white mb-5">Get Sale<br/>Alerts First</h2>
+          <p class="font-body text-white/70 text-base max-w-xs leading-relaxed">Drop your email and we'll notify you before we post publicly. Exclusivity is everything.</p>
+        </div>
+        <div>
+          <div class="flex flex-col gap-6">
+            <div>
+              <input class="line-input-white" type="email" placeholder="Your email address" id="email-input"/>
+            </div>
+            <div>
+              <button onclick="handleEmailSubmit()" class="w-full bg-white text-primary py-4 font-label text-[10px] uppercase tracking-[0.2em] rounded-lg hover:bg-primary-fixed transition-colors duration-300">
+                Notify Me
+              </button>
+            </div>
+            <p class="font-label text-[9px] tracking-widest text-white/40 uppercase">No spam. Unsubscribe anytime.</p>
+          </div>
+          <div id="email-success" class="hidden mt-4 font-label text-[10px] uppercase tracking-widest text-white/80">
+            ✓ You're on the list. Watch your inbox.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ TIP US OFF ═══════════════════════════════ -->
+<section id="tip" class="py-24 px-6 lg:px-20 bg-surface-container-low">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+
+      <div class="reveal">
+        <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-3">Community Intelligence</p>
+        <h2 class="font-headline text-5xl lg:text-6xl text-on-surface italic leading-tight mb-6">Tip<br/>Us Off</h2>
+        <p class="font-body text-secondary text-base leading-relaxed max-w-sm">
+          Spotted a warehouse sale, sample event or secret pop-up? Share it with us — if we post it, we'll shout you out to our community.
+        </p>
+        <div class="mt-8 flex flex-col gap-3">
+          <div class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+            <p class="font-body text-sm text-secondary">Fashion warehouse sales &amp; end-of-season clearances</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+            <p class="font-body text-sm text-secondary">Private showroom events &amp; invite-only drops</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"></span>
+            <p class="font-body text-sm text-secondary">Pop-ups, markets &amp; brand sample sales</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="reveal reveal-delay-1">
+        <div class="flex flex-col gap-8">
+          <div>
+            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Your name (optional)</label>
+            <input class="line-input" type="text" placeholder="First name or Instagram handle" id="tip-name"/>
+          </div>
+          <div>
+            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Event / Sale name *</label>
+            <input class="line-input" type="text" placeholder="e.g. Glue Store Warehouse Sale" id="tip-event"/>
+          </div>
+          <div>
+            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Location &amp; date</label>
+            <input class="line-input" type="text" placeholder="e.g. Alexandria, 19 Apr" id="tip-location"/>
+          </div>
+          <div>
+            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Any other details</label>
+            <textarea class="line-input resize-none" rows="3" placeholder="Entry cost, times, what's being sold..." id="tip-details" style="padding-top:8px;"></textarea>
+          </div>
+          <button onclick="handleTipSubmit()" class="bg-primary text-white py-4 font-label text-[10px] uppercase tracking-[0.2em] rounded-lg hover:bg-primary-container transition-colors duration-300">
+            Submit Tip
+          </button>
+          <div id="tip-success" class="hidden font-label text-[10px] uppercase tracking-widest text-primary">
+            ✓ Got it — we'll look into it. Thanks for the tip!
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer class="bg-surface py-16 px-6 lg:px-20">
+  <div class="max-w-7xl mx-auto">
+    <!-- Logo row -->
+    <div class="flex flex-col md:flex-row items-center md:items-start justify-between gap-8 mb-12 pb-12 border-b border-outline-variant/20">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <svg width="40" height="26" viewBox="0 0 120 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 12 C14 8, 20 28, 26 22 C32 16, 34 36, 40 30 C46 24, 50 44, 58 38" stroke="#7a0412" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M54 38 C60 32, 66 52, 72 46 C78 40, 80 60, 86 54 C92 48, 96 64, 104 58" stroke="#7a0412" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+          <span class="font-headline italic text-2xl text-primary">Warehouse Wardrobe</span>
+        </div>
+        <p class="font-body text-sm text-secondary max-w-xs">Sydney's digital curator of warehouse sales, pop-ups and archival fashion events.</p>
+      </div>
+
+      <div class="flex gap-4">
+        <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full border border-outline-variant/40 flex items-center justify-center text-secondary hover:border-primary hover:text-primary transition-all">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.tiktok.com/@warehouse.wardrobe" target="_blank" rel="noopener" aria-label="TikTok" class="w-10 h-10 rounded-full border border-outline-variant/40 flex items-center justify-center text-secondary hover:border-primary hover:text-primary transition-all">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.2 8.2 0 004.79 1.53V6.76a4.85 4.85 0 01-1.02-.07z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex gap-8">
+        <a href="#" class="font-label text-[9px] uppercase tracking-widest text-secondary/60 hover:text-secondary transition-colors">Privacy</a>
+        <a href="#" class="font-label text-[9px] uppercase tracking-widest text-secondary/60 hover:text-secondary transition-colors">Terms</a>
+        <a href="#tip" class="font-label text-[9px] uppercase tracking-widest text-secondary/60 hover:text-secondary transition-colors">Submit a Sale</a>
+      </div>
+      <p class="font-label text-[9px] uppercase tracking-widest text-secondary/40">© 2025 Warehouse Wardrobe. The Digital Curator.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Bottom Nav -->
+<div class="md:hidden fixed bottom-0 w-full z-50 bg-surface/90 backdrop-blur-xl flex justify-around items-center h-[72px] px-4 pb-2 border-t border-outline-variant/20">
+  <a href="#" class="flex flex-col items-center gap-0.5 text-primary">
+    <span class="material-symbols-outlined" style="font-size:21px;">style</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Home</span>
+  </a>
+  <a href="#events" class="flex flex-col items-center gap-0.5 text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined" style="font-size:21px;">calendar_today</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Events</span>
+  </a>
+  <a href="#gallery" class="flex flex-col items-center gap-0.5 text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined" style="font-size:21px;">photo_library</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Gallery</span>
+  </a>
+  <a href="#tip" class="flex flex-col items-center gap-0.5 text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined" style="font-size:21px;">edit_note</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Tip Us</span>
+  </a>
+</div>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Email submit
+  function handleEmailSubmit() {
+    const v = document.getElementById('email-input').value;
+    if (!v || !v.includes('@')) { document.getElementById('email-input').focus(); return; }
+    document.getElementById('email-success').classList.remove('hidden');
+    document.getElementById('email-input').value = '';
+  }
+
+  // Tip submit
+  function handleTipSubmit() {
+    const event = document.getElementById('tip-event').value;
+    if (!event.trim()) { document.getElementById('tip-event').focus(); return; }
+    document.getElementById('tip-success').classList.remove('hidden');
+    ['tip-name','tip-event','tip-location','tip-details'].forEach(id => { document.getElementById(id).value = ''; });
+  }
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+</body>
+</html>
