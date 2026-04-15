@@ -606,29 +606,33 @@ tailwind.config = {
 
       <!-- Form -->
       <div class="reveal reveal-delay-1">
-        <div class="flex flex-col gap-8">
+        <form action="https://formspree.io/f/mwvavpbj" method="POST" id="tip-form" class="flex flex-col gap-8">
           <div>
-            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Your name (optional)</label>
-            <input class="line-input" type="text" placeholder="First name or Instagram handle" id="tip-name"/>
+            <label for="tip-name" class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Your name (optional)</label>
+            <input class="line-input" type="text" name="name" id="tip-name" placeholder="First name or Instagram handle"/>
           </div>
           <div>
-            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Event / Sale name *</label>
-            <input class="line-input" type="text" placeholder="e.g. Glue Store Warehouse Sale" id="tip-event"/>
+            <label for="tip-event" class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Event / Sale name *</label>
+            <input class="line-input" type="text" name="event" id="tip-event" placeholder="e.g. Glue Store Warehouse Sale" required/>
           </div>
           <div>
-            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Location &amp; date</label>
-            <input class="line-input" type="text" placeholder="e.g. Alexandria, 19 Apr" id="tip-location"/>
+            <label for="tip-location" class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Location &amp; date</label>
+            <input class="line-input" type="text" name="location" id="tip-location" placeholder="e.g. Alexandria, 19 Apr"/>
           </div>
           <div>
-            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Any other details</label>
-            <textarea class="line-input resize-none" rows="3" placeholder="Entry cost, times, what's being sold..." id="tip-details" style="padding-top:8px;"></textarea>
+            <label for="tip-details" class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Any other details</label>
+            <textarea class="line-input resize-none" name="details" id="tip-details" rows="3" placeholder="Entry cost, times, what's being sold..." style="padding-top:8px;"></textarea>
           </div>
-          <button onclick="handleTipSubmit()" class="bg-primary text-white py-4 font-label text-[10px] uppercase tracking-[0.2em] rounded-lg hover:bg-primary-container transition-colors duration-300">
+          <!-- Honeypot — hidden from humans, catches bots -->
+          <input type="text" name="_gotcha" style="display:none"/>
+          <!-- After submission, Formspree redirects back here with ?submitted=true -->
+          <input type="hidden" name="_next" value="?submitted=true#tip"/>
+          <button type="submit" class="bg-primary text-white py-4 font-label text-[10px] uppercase tracking-[0.2em] rounded-lg hover:bg-primary-container transition-colors duration-300">
             Submit Tip
           </button>
-          <div id="tip-success" class="hidden font-label text-[10px] uppercase tracking-widest text-primary">
-            ✓ Got it — we'll look into it. Thanks for the tip!
-          </div>
+        </form>
+        <div id="tip-success" class="hidden font-label text-[10px] uppercase tracking-widest text-primary mt-4">
+          ✓ Got it — we'll look into it. Thanks for the tip!
         </div>
       </div>
     </div>
@@ -710,12 +714,12 @@ tailwind.config = {
     document.getElementById('email-input').value = '';
   }
 
-  // Tip submit
-  function handleTipSubmit() {
-    const event = document.getElementById('tip-event').value;
-    if (!event.trim()) { document.getElementById('tip-event').focus(); return; }
-    document.getElementById('tip-success').classList.remove('hidden');
-    ['tip-name','tip-event','tip-location','tip-details'].forEach(id => { document.getElementById(id).value = ''; });
+  // Show success message if Formspree redirected back with ?submitted=true
+  if (new URLSearchParams(window.location.search).get('submitted') === 'true') {
+    const form = document.getElementById('tip-form');
+    const success = document.getElementById('tip-success');
+    if (form) form.style.display = 'none';
+    if (success) success.classList.remove('hidden');
   }
 
   // Smooth scroll for anchor links
