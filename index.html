@@ -558,16 +558,21 @@ tailwind.config = {
           <p class="font-body text-white/70 text-base max-w-xs leading-relaxed">Drop your email and we'll notify you before we post publicly. Exclusivity is everything.</p>
         </div>
         <div>
-          <div class="flex flex-col gap-6">
+          <form action="https://formspree.io/f/mlgagdwb" method="POST" id="alerts-form" class="flex flex-col gap-6">
             <div>
-              <input class="line-input-white text-black" type="email" placeholder="Your email address" id="email-input"/>             </div>
+              <input class="line-input-white" type="email" name="email" placeholder="Your email address" id="email-input" required/>
+            </div>
+            <!-- Honeypot spam filter -->
+            <input type="text" name="_gotcha" style="display:none"/>
+            <!-- Redirect back with ?alerted=true after submission -->
+            <input type="hidden" name="_next" value="?alerted=true#alerts"/>
             <div>
-              <button onclick="handleEmailSubmit()" class="w-full bg-white text-primary py-4 font-label text-[10px] uppercase tracking-[0.2em] rounded-lg hover:bg-primary-fixed transition-colors duration-300">
+              <button type="submit" class="w-full bg-white text-primary py-4 font-label text-[10px] uppercase tracking-[0.2em] rounded-lg hover:bg-primary-fixed transition-colors duration-300">
                 Notify Me
               </button>
             </div>
             <p class="font-label text-[9px] tracking-widest text-white/40 uppercase">No spam. Unsubscribe anytime.</p>
-          </div>
+          </form>
           <div id="email-success" class="hidden mt-4 font-label text-[10px] uppercase tracking-widest text-white/80">
             ✓ You're on the list. Watch your inbox.
           </div>
@@ -706,12 +711,12 @@ tailwind.config = {
   }, { threshold: 0.12 });
   revealEls.forEach(el => observer.observe(el));
 
-  // Email submit
-  function handleEmailSubmit() {
-    const v = document.getElementById('email-input').value;
-    if (!v || !v.includes('@')) { document.getElementById('email-input').focus(); return; }
-    document.getElementById('email-success').classList.remove('hidden');
-    document.getElementById('email-input').value = '';
+  // Show success message if Formspree redirected back with ?alerted=true
+  if (new URLSearchParams(window.location.search).get('alerted') === 'true') {
+    const form = document.getElementById('alerts-form');
+    const success = document.getElementById('email-success');
+    if (form) form.style.display = 'none';
+    if (success) success.classList.remove('hidden');
   }
 
   // Show success message if Formspree redirected back with ?submitted=true
