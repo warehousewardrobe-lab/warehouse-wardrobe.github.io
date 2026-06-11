@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Media Kit — Warehouse Wardrobe</title>
+<meta name="description" content="Partner with Warehouse Wardrobe — Sydney's insider guide to warehouse fashion sales, pop-ups and archival drops."/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#7a0412",
+        "primary-container": "#9b2226",
+        "on-primary": "#ffffff",
+        "on-primary-container": "#ffb0ab",
+        "primary-fixed": "#ffdad7",
+        "surface": "#fcf9f8",
+        "surface-container-low": "#f6f3f2",
+        "surface-container": "#f0eded",
+        "surface-container-high": "#eae7e7",
+        "surface-container-highest": "#e5e2e1",
+        "on-surface": "#1c1b1b",
+        "secondary": "#6a5d43",
+        "on-secondary-container": "#6e6147",
+        "outline-variant": "#e0bfbc",
+        "background": "#fcf9f8",
+      },
+      fontFamily: {
+        headline: ["Newsreader", "serif"],
+        body: ["Manrope", "sans-serif"],
+        label: ["Manrope", "sans-serif"],
+      },
+      borderRadius: {
+        DEFAULT: "0.125rem",
+        lg: "0.25rem",
+        xl: "0.75rem",
+        full: "9999px",
+      }
+    }
+  }
+}
+</script>
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: 'Manrope', sans-serif; background: #fcf9f8; color: #1c1b1b; }
+  h1, h2, h3, h4, .serif { font-family: 'Newsreader', serif; }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24; }
+
+  .glass-nav {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background: rgba(252, 249, 248, 0.92);
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .ticker-inner { animation: ticker 28s linear infinite; display: flex; white-space: nowrap; }
+  .ticker-inner:hover { animation-play-state: paused; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  @keyframes heroFade {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: none; }
+  }
+  .hero-line-1 { animation: heroFade 0.8s cubic-bezier(.4,0,.2,1) 0.1s both; }
+  .hero-line-2 { animation: heroFade 0.8s cubic-bezier(.4,0,.2,1) 0.3s both; }
+  .hero-line-3 { animation: heroFade 0.8s cubic-bezier(.4,0,.2,1) 0.5s both; }
+  .hero-line-4 { animation: heroFade 0.8s cubic-bezier(.4,0,.2,1) 0.65s both; }
+
+  /* Nav pill */
+  .nav-tab {
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #6a5d43;
+    padding: 8px 20px;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: transparent;
+  }
+  .nav-tab:hover { color: #7a0412; }
+  .nav-tab.active {
+    color: #7a0412;
+    border-color: rgba(122,4,18,0.2);
+    background: rgba(122,4,18,0.04);
+  }
+
+  /* Section tabs */
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* Stat counter */
+  .stat-num {
+    font-family: 'Newsreader', serif;
+    font-size: clamp(2.4rem, 5vw, 3.5rem);
+    font-weight: 300;
+    font-style: italic;
+    color: #7a0412;
+    line-height: 1;
+  }
+
+  /* Bar */
+  .bar-track { background: #eae7e7; border-radius: 9999px; height: 3px; }
+  .bar-fill { background: #7a0412; height: 3px; border-radius: 9999px; transition: width 1.2s cubic-bezier(.4,0,.2,1); width: 0; }
+
+  /* Package card */
+  .pkg-card { transition: transform 0.3s cubic-bezier(.4,0,.2,1); }
+  .pkg-card:hover { transform: translateY(-4px); }
+
+  /* Divider rule */
+  .rule { border: none; border-top: 1px solid rgba(224,191,188,0.35); }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.018;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  @media (max-width: 768px) { body { padding-bottom: 80px; } }
+
+  .chip {
+    display: inline-flex; align-items: center;
+    padding: 4px 14px; border-radius: 9999px;
+    font-family: 'Manrope', sans-serif;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+  }
+  .chip-crimson { background: rgba(122,4,18,0.08); color: #7a0412; }
+  .chip-warm { background: rgba(106,93,67,0.1); color: #6a5d43; }
+</style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 glass-nav flex items-center justify-between px-6 lg:px-16 h-16 border-b border-outline-variant/20">
+  <a href="https://warehousewardrobe.com.au" target="_blank" rel="noopener" class="flex items-center gap-2.5 no-underline">
+    <span class="font-headline tracking-[0.18em] uppercase text-sm font-bold text-primary">Warehouse Wardrobe</span>
+  </a>
+
+  <div class="hidden md:flex items-center gap-1">
+    <button class="nav-tab active" onclick="switchTab('overview', this)">Overview</button>
+    <button class="nav-tab" onclick="switchTab('audience', this)">Audience</button>
+    <button class="nav-tab" onclick="switchTab('packages', this)">Packages</button>
+    <button class="nav-tab" onclick="switchTab('assets', this)">Assets</button>
+    <button class="nav-tab" onclick="switchTab('contact', this)">Contact</button>
+  </div>
+
+  <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener"
+    class="hidden md:flex items-center gap-1.5 font-label text-[10px] tracking-widest uppercase text-primary border border-primary/20 px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+    Follow
+  </a>
+</nav>
+
+<!-- TICKER -->
+<div class="mt-16 bg-primary overflow-hidden py-2.5">
+  <div class="ticker-inner">
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Media Kit 2025</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Sydney's Digital Curator</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Warehouse Sales · Pop-Ups · Archival Drops</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">@warehouse.wardrobe</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Media Kit 2025</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Sydney's Digital Curator</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">Warehouse Sales · Pop-Ups · Archival Drops</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+    <span class="font-label text-[9px] text-white/70 tracking-[0.3em] uppercase px-8">@warehouse.wardrobe</span>
+    <span class="font-label text-[9px] text-white/40 tracking-[0.3em] uppercase">✦</span>
+  </div>
+</div>
+
+<!-- MOBILE TAB BAR -->
+<div class="md:hidden fixed bottom-0 w-full z-50 bg-surface/95 backdrop-blur-xl flex justify-around items-center h-[72px] px-4 pb-2 border-t border-outline-variant/20">
+  <button onclick="switchTab('overview', null)" class="flex flex-col items-center gap-0.5 text-primary">
+    <span class="material-symbols-outlined" style="font-size:21px;">info</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Overview</span>
+  </button>
+  <button onclick="switchTab('audience', null)" class="flex flex-col items-center gap-0.5 text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined" style="font-size:21px;">groups</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Audience</span>
+  </button>
+  <button onclick="switchTab('packages', null)" class="flex flex-col items-center gap-0.5 text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined" style="font-size:21px;">diamond</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Packages</span>
+  </button>
+  <button onclick="switchTab('contact', null)" class="flex flex-col items-center gap-0.5 text-secondary hover:text-primary transition-colors">
+    <span class="material-symbols-outlined" style="font-size:21px;">mail</span>
+    <span class="font-label text-[8px] uppercase tracking-widest">Contact</span>
+  </button>
+</div>
+
+<!-- ══════════════ SECTION: OVERVIEW ══════════════ -->
+<div id="section-overview" class="section active">
+
+  <!-- Hero -->
+  <section class="px-6 lg:px-20 pt-16 pb-20 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="hero-line-1 font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-6">Sydney · The Digital Curator · Est. 2023</p>
+        <h1 class="hero-line-2 font-headline text-[clamp(3rem,6vw,5.5rem)] italic leading-[1.05] text-on-surface mb-6">
+          Partner with<br/>
+          <span class="text-primary not-italic">Warehouse<br/>Wardrobe</span>
+        </h1>
+        <p class="hero-line-3 font-body text-secondary text-base lg:text-lg max-w-sm leading-relaxed mb-10">
+          Sydney's go-to source for warehouse fashion sales, designer pop-ups and archival drops. We reach an engaged community of style-savvy shoppers before the crowds do.
+        </p>
+        <div class="hero-line-4 flex flex-wrap gap-3">
+          <button onclick="switchTab('packages', document.querySelector('.nav-tab:nth-child(3)'))"
+            class="bg-primary text-white px-8 py-3.5 font-label text-[10px] tracking-[0.2em] uppercase rounded-xl hover:bg-primary-container transition-all duration-300">
+            View Packages
+          </button>
+          <button onclick="switchTab('contact', document.querySelector('.nav-tab:nth-child(5)'))"
+            class="border border-primary/25 text-primary px-8 py-3.5 font-label text-[10px] tracking-[0.2em] uppercase rounded-xl hover:border-primary transition-all duration-300">
+            Get in Touch
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats grid -->
+      <div class="grid grid-cols-2 gap-5">
+        <div class="bg-surface-container-low rounded-xl p-7 flex flex-col gap-2">
+          <div class="stat-num" data-target="52000" data-suffix="K+">0</div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary">Instagram followers</p>
+        </div>
+        <div class="bg-primary rounded-xl p-7 flex flex-col gap-2">
+          <div class="font-headline text-[clamp(2.4rem,5vw,3.5rem)] font-light italic text-white leading-none">7.2%</div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-white/60">Engagement rate</p>
+        </div>
+        <div class="bg-surface-container rounded-xl p-7 flex flex-col gap-2">
+          <div class="stat-num" data-target="280000" data-suffix="K+">0</div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary">Monthly reach</p>
+        </div>
+        <div class="bg-surface-container-low rounded-xl p-7 flex flex-col gap-2">
+          <div class="font-headline text-[clamp(2.4rem,5vw,3.5rem)] font-light italic text-primary leading-none">85%</div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary">Female audience</p>
+        </div>
+        <div class="col-span-2 bg-on-surface rounded-xl p-7 flex flex-col gap-2">
+          <div class="font-headline text-[clamp(2.4rem,5vw,3.5rem)] font-light italic text-primary-fixed leading-none">2 yrs</div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-white/50">Trusted by Sydney shoppers</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule mx-6 lg:mx-20"/>
+
+  <!-- What we do -->
+  <section class="px-6 lg:px-20 py-20 max-w-7xl mx-auto reveal">
+    <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-4">What We Do</p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <h2 class="font-headline text-4xl lg:text-5xl italic text-on-surface leading-tight">The hunt is<br/>the point.</h2>
+      <div class="space-y-6">
+        <p class="font-body text-secondary text-base leading-relaxed">
+          Warehouse Wardrobe is Sydney's most trusted curator of fashion warehouse sales, sample events and designer pop-ups. We post before events sell out — giving our community the edge.
+        </p>
+        <p class="font-body text-secondary text-base leading-relaxed">
+          From luxury jewellery to denim brands, formalwear to streetwear — if it's a genuine deal on quality fashion, we find it first and share it fast.
+        </p>
+        <div class="flex flex-wrap gap-2 pt-2">
+          <span class="chip chip-crimson">Sydney-based</span>
+          <span class="chip chip-warm">Fashion & Lifestyle</span>
+          <span class="chip chip-crimson">Warehouse Sales</span>
+          <span class="chip chip-warm">Pop-ups & Drops</span>
+          <span class="chip chip-crimson">Archival Fashion</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content highlights: video grid -->
+  <section class="px-6 lg:px-20 py-20 max-w-7xl mx-auto reveal">
+    <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-4">Content Highlights</p>
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-12">
+      <h2 class="font-headline text-4xl lg:text-5xl italic text-on-surface leading-tight">Recent<br/>coverage.</h2>
+      <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener"
+        class="font-label text-[9px] uppercase tracking-widest text-secondary hover:text-primary transition-colors flex items-center gap-1 self-start lg:self-auto">
+        View all on Instagram <span class="material-symbols-outlined" style="font-size:14px;">arrow_forward</span>
+      </a>
+    </div>
+
+    <!-- Video grid — replace the src URLs with your actual Instagram Reel embed URLs -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Video card 1 -->
+      <div class="flex flex-col gap-3">
+        <div class="relative w-full bg-surface-container-high rounded-xl overflow-hidden" style="aspect-ratio:9/16;">
+          <iframe
+            src="https://www.instagram.com/reel/DW6OsoDETMd/embed/"
+            class="absolute inset-0 w-full h-full border-0"
+            allowfullscreen scrolling="no" loading="lazy"
+            title="Warehouse Wardrobe reel"></iframe>
+        </div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-widest text-primary mb-1">Warehouse Sale</p>
+          <p class="font-body text-sm text-secondary">Replace with your caption — brand name, views, saves.</p>
+        </div>
+      </div>
+
+      <!-- Video card 2 -->
+      <div class="flex flex-col gap-3">
+        <div class="relative w-full bg-surface-container-high rounded-xl overflow-hidden" style="aspect-ratio:9/16;">
+          <iframe
+            src="https://www.instagram.com/p/REPLACE_WITH_YOUR_POST_ID/embed/"
+            class="absolute inset-0 w-full h-full border-0"
+            allowfullscreen scrolling="no" loading="lazy"
+            title="Warehouse Wardrobe reel"></iframe>
+        </div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-widest text-primary mb-1">Pop-up Event</p>
+          <p class="font-body text-sm text-secondary">Replace with your caption — brand name, views, saves.</p>
+        </div>
+      </div>
+
+      <!-- Video card 3 -->
+      <div class="flex flex-col gap-3">
+        <div class="relative w-full bg-surface-container-high rounded-xl overflow-hidden" style="aspect-ratio:9/16;">
+          <iframe
+            src="https://www.instagram.com/p/REPLACE_WITH_YOUR_POST_ID/embed/"
+            class="absolute inset-0 w-full h-full border-0"
+            allowfullscreen scrolling="no" loading="lazy"
+            title="Warehouse Wardrobe reel"></iframe>
+        </div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-widest text-primary mb-1">Archival Drop</p>
+          <p class="font-body text-sm text-secondary">Replace with your caption — brand name, views, saves.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="font-label text-[9px] uppercase tracking-widest text-secondary/50 mt-8 text-center">
+      To update: replace each iframe <code>src</code> URL with your Reel or post URL ending in <code>/embed/</code>
+    </p>
+  </section>
+
+</div>
+
+<!-- ══════════════ SECTION: AUDIENCE ══════════════ -->
+<div id="section-audience" class="section">
+  <section class="px-6 lg:px-20 pt-16 pb-20 max-w-7xl mx-auto">
+    <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-4">Our Audience</p>
+    <h2 class="font-headline text-5xl lg:text-6xl italic text-on-surface mb-16 leading-tight">Who's<br/>listening.</h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+      <!-- Demographics -->
+      <div>
+        <p class="font-label text-[10px] uppercase tracking-widest text-secondary mb-8">Age breakdown</p>
+        <div class="space-y-6" id="age-bars">
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label text-[10px] uppercase tracking-widest text-secondary">18–24</span>
+              <span class="font-label text-[10px] text-primary">24%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="24"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label text-[10px] uppercase tracking-widest text-secondary">25–34</span>
+              <span class="font-label text-[10px] text-primary">48%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="48"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label text-[10px] uppercase tracking-widest text-secondary">35–44</span>
+              <span class="font-label text-[10px] text-primary">19%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="19"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label text-[10px] uppercase tracking-widest text-secondary">45+</span>
+              <span class="font-label text-[10px] text-primary">9%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="9"></div></div>
+          </div>
+        </div>
+
+        <hr class="rule my-10"/>
+
+        <p class="font-label text-[10px] uppercase tracking-widest text-secondary mb-8">Platform breakdown</p>
+        <div class="space-y-6">
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label text-[10px] uppercase tracking-widest text-secondary">Instagram</span>
+              <span class="font-label text-[10px] text-primary">72%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="72"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label text-[10px] uppercase tracking-widest text-secondary">TikTok</span>
+              <span class="font-label text-[10px] text-primary">21%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="21"></div></div>
+          </div>
+          <div>
+            <div class="flex justify-between mb-2">
+              <span class="font-label text-[10px] uppercase tracking-widest text-secondary">Website</span>
+              <span class="font-label text-[10px] text-primary">7%</span>
+            </div>
+            <div class="bar-track"><div class="bar-fill" data-width="7"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key stats + location -->
+      <div class="space-y-8">
+        <div class="bg-surface-container-low rounded-xl p-8 grid grid-cols-2 gap-8">
+          <div>
+            <div class="font-headline text-4xl italic text-primary mb-1">85%</div>
+            <p class="font-label text-[9px] uppercase tracking-[0.15em] text-secondary">Women</p>
+          </div>
+          <div>
+            <div class="font-headline text-4xl italic text-primary mb-1">15%</div>
+            <p class="font-label text-[9px] uppercase tracking-[0.15em] text-secondary">Men</p>
+          </div>
+          <div>
+            <div class="font-headline text-4xl italic text-primary mb-1">7.2%</div>
+            <p class="font-label text-[9px] uppercase tracking-[0.15em] text-secondary">Engagement rate</p>
+          </div>
+          <div>
+            <div class="font-headline text-4xl italic text-primary mb-1">4.1×</div>
+            <p class="font-label text-[9px] uppercase tracking-[0.15em] text-secondary">Industry avg.</p>
+          </div>
+        </div>
+
+        <div>
+          <p class="font-label text-[10px] uppercase tracking-widest text-secondary mb-6">Top locations</p>
+          <div class="space-y-3">
+            <div class="flex items-center justify-between py-3 border-b border-outline-variant/25">
+              <span class="font-body text-sm text-on-surface">Sydney, NSW</span>
+              <span class="font-label text-[10px] text-primary">61%</span>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b border-outline-variant/25">
+              <span class="font-body text-sm text-on-surface">Melbourne, VIC</span>
+              <span class="font-label text-[10px] text-primary">18%</span>
+            </div>
+            <div class="flex items-center justify-between py-3 border-b border-outline-variant/25">
+              <span class="font-body text-sm text-on-surface">Brisbane, QLD</span>
+              <span class="font-label text-[10px] text-primary">8%</span>
+            </div>
+            <div class="flex items-center justify-between py-3">
+              <span class="font-body text-sm text-on-surface">Other Australia</span>
+              <span class="font-label text-[10px] text-primary">13%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-primary rounded-xl p-8">
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-white/50 mb-3">Our audience is</p>
+          <p class="font-headline text-2xl italic text-white leading-relaxed">Highly purchase-intent shoppers who act fast when they spot a deal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════ SECTION: PACKAGES ══════════════ -->
+<div id="section-packages" class="section">
+  <section class="px-6 lg:px-20 pt-16 pb-20 max-w-7xl mx-auto">
+    <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-4">Partnership Options</p>
+    <h2 class="font-headline text-5xl lg:text-6xl italic text-on-surface mb-4 leading-tight">Work with<br/>us.</h2>
+    <p class="font-body text-secondary text-base max-w-lg leading-relaxed mb-16">Straightforward packages for brands who want to reach Sydney's most engaged fashion shoppers — before the crowds do.</p>
+
+    <!-- ── EOFY SPECIAL ── -->
+    <div class="mb-6">
+      <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-5">Limited Offer · Ends 30 June 2026</p>
+    </div>
+    <div class="relative rounded-xl overflow-hidden mb-16" style="background:#1c1b1b;">
+      <!-- Decorative EOFY label -->
+      <div class="absolute top-0 right-0 bg-primary px-6 py-2 rounded-bl-xl">
+        <span class="font-label text-[9px] uppercase tracking-[0.2em] text-white">EOFY Special</span>
+      </div>
+
+      <div class="p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="font-headline text-6xl text-white/8 italic leading-none block mb-4">EOFY</span>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary-fixed/60 mb-2">End of Financial Year Package</p>
+          <h3 class="font-headline text-3xl lg:text-4xl italic text-primary-fixed mb-5 leading-tight">The EOFY Reel</h3>
+          <p class="font-body text-sm leading-relaxed mb-6" style="color:rgba(252,249,248,0.6);">
+            Capture the EOFY moment while purchase intent is at its peak. We create a dedicated Reel tailored to your sale type — perfect for brands running an end-of-year push.
+          </p>
+          <!-- What's included -->
+          <div class="space-y-3 mb-8">
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+              <p class="font-body text-sm" style="color:rgba(252,249,248,0.7);"><span style="color:#ffdad7;" class="font-medium">Online / e-commerce sale</span> — a haul-style Reel showcasing your hero products, pricing and a direct link to shop</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+              <p class="font-body text-sm" style="color:rgba(252,249,248,0.7);"><span style="color:#ffdad7;" class="font-medium">In-person warehouse sale</span> — a walk-through Reel running through the sale floor, highlights and try-ons where appropriate</p>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
+              <p class="font-body text-sm" style="color:rgba(252,249,248,0.7);">Posted to Instagram Reels + Stories, with link in bio for the duration of your sale</p>
+            </div>
+          </div>
+          <button onclick="switchTab('contact', null)"
+            class="font-label text-[10px] tracking-[0.2em] uppercase px-8 py-3.5 rounded-xl transition-all duration-300"
+            style="background:#7a0412; color:#fff;">
+            Enquire About EOFY
+          </button>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <div class="rounded-xl p-6" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
+            <p class="font-label text-[9px] uppercase tracking-[0.15em] mb-1" style="color:rgba(252,249,248,0.4);">EOFY Package price</p>
+            <p class="font-headline text-4xl italic" style="color:#ffdad7;">$480</p>
+            <p class="font-body text-xs mt-2" style="color:rgba(252,249,248,0.4);">Valid for sales or campaigns ending before 30 June 2026</p>
+          </div>
+          <div class="rounded-xl p-6" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
+            <p class="font-label text-[9px] uppercase tracking-[0.15em] mb-3" style="color:rgba(252,249,248,0.4);">Why EOFY works</p>
+            <div class="space-y-2">
+              <p class="font-body text-xs" style="color:rgba(252,249,248,0.6);">Our audience is actively hunting deals in June — EOFY spend peaks across fashion, homewares and lifestyle.</p>
+              <p class="font-body text-xs" style="color:rgba(252,249,248,0.6);">High purchase-intent + time pressure = strong conversion for brands with genuine offers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GENERAL PACKAGES ── -->
+    <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-8">General Packages</p>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+
+      <!-- Free tier -->
+      <div class="pkg-card border border-outline-variant/40 rounded-xl p-8 flex flex-col gap-5">
+        <div class="flex items-start justify-between">
+          <span class="font-headline text-5xl text-primary/10 italic leading-none">00</span>
+          <span class="chip chip-warm">Free</span>
+        </div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Basic Listing</p>
+          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Story + Weekly Roundup</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">We post a Story promoting your sale and include you in our "sales this week" roundup. Open to all brands — submit your sale details and we'll take care of the rest.</p>
+        </div>
+        <div class="space-y-1.5 pt-2">
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-secondary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">1 × Story post</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-secondary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">Included in "sales this week" feed post</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-4 border-t border-outline-variant/20">
+          <p class="font-headline text-3xl italic text-primary">Free</p>
+          <p class="font-label text-[9px] uppercase tracking-widest text-secondary mt-1">Submit via the tip form</p>
+        </div>
+      </div>
+
+      <!-- Tier 1 -->
+      <div class="pkg-card border-2 border-primary/30 rounded-xl p-8 flex flex-col gap-5 relative">
+        <div class="absolute -top-3 left-8">
+          <span class="chip chip-crimson">Most Popular</span>
+        </div>
+        <div class="flex items-start justify-between">
+          <span class="font-headline text-5xl text-primary/10 italic leading-none">01</span>
+        </div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Tier 1</p>
+          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Sale Walk-through Reel</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">We attend your event and film a Reel walking through the sale — showcasing highlights, key pieces and try-ons where appropriate. Authentic, community-first content.</p>
+        </div>
+        <div class="space-y-1.5 pt-2">
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">1 × Reel (walk-through + highlights)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">Try-ons included where appropriate</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">Link in bio for sale duration</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-4 border-t border-outline-variant/20">
+          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-secondary mb-1">From</p>
+          <p class="font-headline text-3xl italic text-primary">$250</p>
+        </div>
+      </div>
+
+      <!-- Tier 2 -->
+      <div class="pkg-card border border-outline-variant/40 rounded-xl p-8 flex flex-col gap-5">
+        <div class="flex items-start justify-between">
+          <span class="font-headline text-5xl text-primary/10 italic leading-none">02</span>
+        </div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Tier 2</p>
+          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Reel + Save the Date</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">Everything in Tier 1, plus a "save the date" post before your event to build anticipation and drive foot traffic from our most engaged followers.</p>
+        </div>
+        <div class="space-y-1.5 pt-2">
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">1 × Save the date post (pre-event)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">1 × Reel (walk-through + highlights)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">Try-ons included where appropriate</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">Link in bio for sale duration</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-4 border-t border-outline-variant/20">
+          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-secondary mb-1">From</p>
+          <p class="font-headline text-3xl italic text-primary">$400</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="mt-4 text-center">
+      <button onclick="switchTab('contact', null)"
+        class="bg-primary text-white px-10 py-4 font-label text-[10px] tracking-[0.2em] uppercase rounded-xl hover:bg-primary-container transition-all duration-300">
+        Get in Touch
+      </button>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════ SECTION: ASSETS ══════════════ -->
+<div id="section-assets" class="section">
+  <section class="px-6 lg:px-20 pt-16 pb-20 max-w-7xl mx-auto">
+    <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-4">Brand Assets</p>
+    <h2 class="font-headline text-5xl lg:text-6xl italic text-on-surface mb-4 leading-tight">Download<br/>our assets.</h2>
+    <p class="font-body text-secondary text-base max-w-lg leading-relaxed mb-16">Use these materials in press coverage, co-marketing or partner communications. For usage beyond editorial, please contact us first.</p>
+
+    <!-- Asset list -->
+    <div class="max-w-2xl">
+      <div class="flex items-center justify-between py-6 border-b border-outline-variant/25 group">
+        <div class="flex items-center gap-5">
+          <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center text-secondary">
+            <span class="material-symbols-outlined" style="font-size:18px;">image</span>
+          </div>
+          <div>
+            <p class="font-body text-sm text-on-surface font-medium">Logo pack</p>
+            <p class="font-label text-[9px] uppercase tracking-widest text-secondary mt-0.5">SVG · PNG · White & Crimson variants</p>
+          </div>
+        </div>
+        <a href="mailto:info@warehousewardrobe.com.au?subject=Asset Request — Logo Pack" class="font-label text-[9px] uppercase tracking-widest text-primary border border-primary/20 px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-all">
+          Request
+        </a>
+      </div>
+
+      <div class="flex items-center justify-between py-6 border-b border-outline-variant/25 group">
+        <div class="flex items-center gap-5">
+          <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center text-secondary">
+            <span class="material-symbols-outlined" style="font-size:18px;">palette</span>
+          </div>
+          <div>
+            <p class="font-body text-sm text-on-surface font-medium">Brand style guide</p>
+            <p class="font-label text-[9px] uppercase tracking-widest text-secondary mt-0.5">Colours · Typography · Usage guidelines</p>
+          </div>
+        </div>
+        <a href="mailto:info@warehousewardrobe.com.au?subject=Asset Request — Style Guide" class="font-label text-[9px] uppercase tracking-widest text-primary border border-primary/20 px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-all">
+          Request
+        </a>
+      </div>
+
+      <div class="flex items-center justify-between py-6 border-b border-outline-variant/25 group">
+        <div class="flex items-center gap-5">
+          <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center text-secondary">
+            <span class="material-symbols-outlined" style="font-size:18px;">photo_library</span>
+          </div>
+          <div>
+            <p class="font-body text-sm text-on-surface font-medium">Press photos</p>
+            <p class="font-label text-[9px] uppercase tracking-widest text-secondary mt-0.5">High-res editorial photography · JPG</p>
+          </div>
+        </div>
+        <a href="mailto:info@warehousewardrobe.com.au?subject=Asset Request — Press Photos" class="font-label text-[9px] uppercase tracking-widest text-primary border border-primary/20 px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-all">
+          Request
+        </a>
+      </div>
+
+      <div class="flex items-center justify-between py-6 border-b border-outline-variant/25 group">
+        <div class="flex items-center gap-5">
+          <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center text-secondary">
+            <span class="material-symbols-outlined" style="font-size:18px;">article</span>
+          </div>
+          <div>
+            <p class="font-body text-sm text-on-surface font-medium">Press kit (PDF)</p>
+            <p class="font-label text-[9px] uppercase tracking-widest text-secondary mt-0.5">One-page overview · Stats · Contact</p>
+          </div>
+        </div>
+        <a href="mailto:info@warehousewardrobe.com.au?subject=Asset Request — Press Kit PDF" class="font-label text-[9px] uppercase tracking-widest text-primary border border-primary/20 px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-all">
+          Request
+        </a>
+      </div>
+
+      <div class="flex items-center justify-between py-6 group">
+        <div class="flex items-center gap-5">
+          <div class="w-10 h-10 bg-surface-container rounded-xl flex items-center justify-center text-secondary">
+            <span class="material-symbols-outlined" style="font-size:18px;">analytics</span>
+          </div>
+          <div>
+            <p class="font-body text-sm text-on-surface font-medium">Media kit PDF</p>
+            <p class="font-label text-[9px] uppercase tracking-widest text-secondary mt-0.5">Full statistics · Packages · Rates</p>
+          </div>
+        </div>
+        <a href="mailto:info@warehousewardrobe.com.au?subject=Media Kit PDF Request" class="font-label text-[9px] uppercase tracking-widest text-primary border border-primary/20 px-4 py-2 rounded-full hover:bg-primary hover:text-white transition-all">
+          Request
+        </a>
+      </div>
+    </div>
+
+    <hr class="rule mt-16 mb-16 max-w-2xl"/>
+
+    <!-- Brand colour reference -->
+    <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-8">Brand Palette</p>
+    <div class="flex flex-wrap gap-4 max-w-2xl">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg" style="background:#7a0412;"></div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-widest text-on-surface">Crimson</p>
+          <p class="font-label text-[9px] text-secondary">#7a0412</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg" style="background:#fcf9f8; border: 1px solid #e0bfbc;"></div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-widest text-on-surface">Cream</p>
+          <p class="font-label text-[9px] text-secondary">#fcf9f8</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg" style="background:#1c1b1b;"></div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-widest text-on-surface">Ink</p>
+          <p class="font-label text-[9px] text-secondary">#1c1b1b</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg" style="background:#6a5d43;"></div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-widest text-on-surface">Warm Taupe</p>
+          <p class="font-label text-[9px] text-secondary">#6a5d43</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════ SECTION: CONTACT ══════════════ -->
+<div id="section-contact" class="section">
+  <section class="px-6 lg:px-20 pt-16 pb-20 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+      <div>
+        <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-4">Get in Touch</p>
+        <h2 class="font-headline text-5xl lg:text-6xl italic text-on-surface leading-tight mb-6">Let's work<br/>together.</h2>
+        <p class="font-body text-secondary text-base leading-relaxed max-w-sm mb-10">
+          Whether you're a brand running a warehouse sale or a PR agency looking to reach Sydney's sharpest fashion shoppers — we'd love to hear from you.
+        </p>
+
+        <div class="space-y-5 mb-10">
+          <a href="mailto:info@warehousewardrobe.com.au" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-outline-variant/40 rounded-full flex items-center justify-center text-secondary group-hover:border-primary group-hover:text-primary transition-all">
+              <span class="material-symbols-outlined" style="font-size:16px;">mail</span>
+            </div>
+            <span class="font-body text-sm text-secondary group-hover:text-primary transition-colors">info@warehousewardrobe.com.au</span>
+          </a>
+          <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-outline-variant/40 rounded-full flex items-center justify-center text-secondary group-hover:border-primary group-hover:text-primary transition-all">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <span class="font-body text-sm text-secondary group-hover:text-primary transition-colors">@warehouse.wardrobe</span>
+          </a>
+          <a href="https://www.tiktok.com/@warehouse.wardrobe" target="_blank" rel="noopener" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-outline-variant/40 rounded-full flex items-center justify-center text-secondary group-hover:border-primary group-hover:text-primary transition-all">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.2 8.2 0 004.79 1.53V6.76a4.85 4.85 0 01-1.02-.07z"/></svg>
+            </div>
+            <span class="font-body text-sm text-secondary group-hover:text-primary transition-colors">@warehouse.wardrobe</span>
+          </a>
+          <a href="https://warehousewardrobe.com.au" target="_blank" rel="noopener" class="flex items-center gap-4 group">
+            <div class="w-10 h-10 border border-outline-variant/40 rounded-full flex items-center justify-center text-secondary group-hover:border-primary group-hover:text-primary transition-all">
+              <span class="material-symbols-outlined" style="font-size:16px;">language</span>
+            </div>
+            <span class="font-body text-sm text-secondary group-hover:text-primary transition-colors">warehousewardrobe.com.au</span>
+          </a>
+        </div>
+
+        <!-- Response time note -->
+        <div class="bg-surface-container-low rounded-xl p-6">
+          <p class="font-label text-[9px] uppercase tracking-widest text-secondary mb-2">Response time</p>
+          <p class="font-body text-sm text-on-surface">We aim to respond to all partnership enquiries within 2 business days.</p>
+        </div>
+      </div>
+
+      <!-- Quick enquiry form -->
+      <div>
+        <p class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary mb-8">Quick enquiry</p>
+        <form action="https://formspree.io/f/mwvavpbj" method="POST" id="media-form" class="flex flex-col gap-8">
+          <div>
+            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Your name *</label>
+            <input type="text" name="name" required placeholder="Full name" class="line-input"/>
+          </div>
+          <div>
+            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Brand / Company *</label>
+            <input type="text" name="brand" required placeholder="Brand name" class="line-input"/>
+          </div>
+          <div>
+            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">Email *</label>
+            <input type="email" name="email" required placeholder="your@email.com" class="line-input"/>
+          </div>
+          <div>
+            <label class="font-label text-[9px] uppercase tracking-[0.2em] text-secondary block mb-2">What you're after</label>
+            <textarea name="message" rows="4" placeholder="Tell us about your event or partnership idea..." class="line-input resize-none" style="padding-top:8px;"></textarea>
+          </div>
+          <input type="text" name="_gotcha" style="display:none"/>
+          <button type="submit"
+            class="bg-primary text-white py-4 font-label text-[10px] uppercase tracking-[0.2em] rounded-xl hover:bg-primary-container transition-colors duration-300">
+            Send Enquiry
+          </button>
+        </form>
+        <div id="form-success" class="hidden font-label text-[10px] uppercase tracking-widest text-primary mt-4">
+          ✓ Message received — we'll be in touch soon.
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-on-surface py-12 px-6 lg:px-20 mt-8">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center md:items-start justify-between gap-6">
+    <div>
+      <p class="font-headline italic text-xl text-primary-fixed mb-2">Warehouse Wardrobe</p>
+      <p class="font-label text-[9px] uppercase tracking-widest text-white/30">Media Kit · 2025</p>
+    </div>
+    <div class="flex flex-col items-end gap-2">
+      <a href="https://warehousewardrobe.com.au" target="_blank" rel="noopener"
+        class="font-label text-[9px] uppercase tracking-widest text-white/40 hover:text-white/70 transition-colors">
+        warehousewardrobe.com.au
+      </a>
+      <p class="font-label text-[9px] uppercase tracking-widest text-white/20">© 2025 Warehouse Wardrobe</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .line-input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(224,191,188,0.4);
+    outline: none;
+    padding: 12px 0;
+    font-family: 'Manrope', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1c1b1b;
+    width: 100%;
+    transition: border-color 0.3s;
+  }
+  .line-input::placeholder { color: #8c716e; text-transform: none; letter-spacing: 0.04em; }
+  .line-input:focus { border-bottom-color: #7a0412; }
+</style>
+
+<script>
+  // Tab switching
+  function switchTab(id, btn) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.getElementById('section-' + id).classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active'));
+    if (btn) btn.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Trigger bars on audience tab
+    if (id === 'audience') { setTimeout(animateBars, 300); }
+  }
+
+  // Animate stat numbers on load
+  function animateCounter(el) {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const isDivByThousand = target >= 1000;
+    const displayTarget = isDivByThousand ? Math.round(target / 1000) : target;
+    let current = 0;
+    const step = Math.ceil(displayTarget / 60);
+    const timer = setInterval(() => {
+      current = Math.min(current + step, displayTarget);
+      el.textContent = current + (isDivByThousand ? 'K+' : suffix);
+      if (current >= displayTarget) clearInterval(timer);
+    }, 20);
+  }
+
+  document.querySelectorAll('.stat-num[data-target]').forEach(el => {
+    setTimeout(() => animateCounter(el), 400);
+  });
+
+  // Animate bars
+  function animateBars() {
+    document.querySelectorAll('.bar-fill').forEach(bar => {
+      bar.style.width = bar.dataset.width + '%';
+    });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Form success
+  if (new URLSearchParams(window.location.search).get('submitted') === 'true') {
+    const form = document.getElementById('media-form');
+    const success = document.getElementById('form-success');
+    if (form) form.style.display = 'none';
+    if (success) success.classList.remove('hidden');
+  }
+</script>
+</body>
+</html>
