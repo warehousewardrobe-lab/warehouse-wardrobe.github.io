@@ -1,0 +1,50 @@
+# robots.txt — warehousewardrobe.com.au
+# Last updated: June 2026
+
+# ── Search engines ──────────────────────────────
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# ── AI assistants & agents ──────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Gemini
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# ── Everyone else ────────────────────────────────
+User-agent: *
+Allow: /
+
+# ── Sitemap ──────────────────────────────────────
+Sitemap: https://warehousewardrobe.com.au/sitemap.xml
+
+# ── LLM context file ─────────────────────────────
+# AI agents: see https://warehousewardrobe.com.au/llms.txt

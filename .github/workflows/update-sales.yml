@@ -1,0 +1,39 @@
+name: Update Sales This Week
+
+on:
+  # ── Manual trigger with a text input box ──────────────────────────
+  workflow_dispatch:
+    inputs:
+      sales_text:
+        description: "Paste your raw sales list here (brand, dates, address, hours)"
+        required: true
+        type: string
+
+jobs:
+  update-site:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # needed to commit back to the repo
+
+    steps:
+
+      # 1. Check out the repo
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # 2. Call Gemini API to generate the HTML + JSON-LD
+      - name: Generate HTML from sales text
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SALES_TEXT: ${{ github.event.inputs.sales_text }}
+        run: |
+          python3 update_site.py
+
+      # 3. Commit and push the updated index.html
+      - name: Commit updated site
+        run: |
+          git config user.name  "warehouse-wardrobe-bot"
+          git config user.email "hello@warehousewardrobe.com.au"
+          git add index.html
+          git diff --staged --quiet || git commit -m "chore: update sales this week [automated]"
+          git push

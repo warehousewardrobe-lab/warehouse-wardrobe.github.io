@@ -185,339 +185,14 @@ tailwind.config = {
   .chip-public { background: rgba(0,89,107,0.1); color: #00404e; }
   .chip-free { background: rgba(0,89,107,0.1); color: #00404e; }
 </style>
-
-<!--
-  ═══════════════════════════════════════════════════════════════════
-  WAREHOUSE WARDROBE — JSON-LD STRUCTURED DATA
-  Paste this block inside the <head> of your index.html,
-  just before the closing </head> tag.
-  Update weekly when events change.
-  ═══════════════════════════════════════════════════════════════════
--->
+<!-- JSONLD:START -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-
-    {
-      "@type": "WebSite",
-      "@id": "https://warehousewardrobe.com.au/#website",
-      "url": "https://warehousewardrobe.com.au",
-      "name": "Warehouse Wardrobe",
-      "description": "Australia's digital curator of warehouse fashion sales, pop-up events and archive drops. Updated weekly.",
-      "publisher": {
-        "@type": "Person",
-        "name": "Warehouse Wardrobe",
-        "url": "https://warehousewardrobe.com.au"
-      },
-      "sameAs": [
-        "https://www.instagram.com/warehouse.wardrobe",
-        "https://www.tiktok.com/@warehouse.wardrobe"
-      ]
-    },
-
-    {
-      "@type": "ItemList",
-      "@id": "https://warehousewardrobe.com.au/#events-this-week",
-      "name": "Warehouse Sales This Week — Australia (17–21 June 2026)",
-      "description": "Current warehouse fashion sales, pop-up events and archive drops happening across Australia this week.",
-      "numberOfItems": 6,
-      "itemListElement": [
-
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "item": {
-            "@type": "SaleEvent",
-            "@id": "https://warehousewardrobe.com.au/#event-nookie-jun2026",
-            "name": "Nookie Warehouse Sale",
-            "description": "Nookie warehouse sale in Chippendale, Sydney. Open Wednesday to Saturday.",
-            "startDate": "2026-06-17T08:00:00+10:00",
-            "endDate": "2026-06-20T17:00:00+10:00",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "location": {
-              "@type": "Place",
-              "name": "Nookie — 16–22 Dick St",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "16–22 Dick St",
-                "addressLocality": "Chippendale",
-                "addressRegion": "NSW",
-                "postalCode": "2008",
-                "addressCountry": "AU"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": -33.8882,
-                "longitude": 151.1986
-              }
-            },
-            "organizer": {
-              "@type": "Organization",
-              "name": "Nookie"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "AUD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://warehousewardrobe.com.au"
-            },
-            "url": "https://warehousewardrobe.com.au",
-            "image": "https://warehousewardrobe.com.au/media/cover-photo.png",
-            "publisher": {
-              "@type": "Person",
-              "name": "Warehouse Wardrobe",
-              "url": "https://warehousewardrobe.com.au"
-            }
-          }
-        },
-
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "item": {
-            "@type": "SaleEvent",
-            "@id": "https://warehousewardrobe.com.au/#event-frankgreen-jun2026",
-            "name": "Frank Green Warehouse Sale",
-            "description": "Frank Green warehouse sale at The Venue in Alexandria, Sydney. Open Friday to Sunday.",
-            "startDate": "2026-06-19T08:00:00+10:00",
-            "endDate": "2026-06-21T19:00:00+10:00",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "location": {
-              "@type": "Place",
-              "name": "The Venue, 55 Doody St",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "55 Doody St",
-                "addressLocality": "Alexandria",
-                "addressRegion": "NSW",
-                "postalCode": "2015",
-                "addressCountry": "AU"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": -33.9148,
-                "longitude": 151.1952
-              }
-            },
-            "organizer": {
-              "@type": "Organization",
-              "name": "Frank Green"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "AUD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://warehousewardrobe.com.au"
-            },
-            "url": "https://warehousewardrobe.com.au",
-            "publisher": {
-              "@type": "Person",
-              "name": "Warehouse Wardrobe",
-              "url": "https://warehousewardrobe.com.au"
-            }
-          }
-        },
-
-        {
-          "@type": "ListItem",
-          "position": 3,
-          "item": {
-            "@type": "SaleEvent",
-            "@id": "https://warehousewardrobe.com.au/#event-petajain-jun2026",
-            "name": "Peta + Jain Warehouse Sale",
-            "description": "Peta + Jain warehouse sale in Botany, Sydney. Open Friday to Sunday 9am–4pm.",
-            "startDate": "2026-06-19T09:00:00+10:00",
-            "endDate": "2026-06-21T16:00:00+10:00",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "location": {
-              "@type": "Place",
-              "name": "Unit 1, 12 Lord St",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Unit 1, 12 Lord St",
-                "addressLocality": "Botany",
-                "addressRegion": "NSW",
-                "postalCode": "2019",
-                "addressCountry": "AU"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": -33.9493,
-                "longitude": 151.2003
-              }
-            },
-            "organizer": {
-              "@type": "Organization",
-              "name": "Peta + Jain"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "AUD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://warehousewardrobe.com.au"
-            },
-            "url": "https://warehousewardrobe.com.au",
-            "publisher": {
-              "@type": "Person",
-              "name": "Warehouse Wardrobe",
-              "url": "https://warehousewardrobe.com.au"
-            }
-          }
-        },
-
-        {
-          "@type": "ListItem",
-          "position": 4,
-          "item": {
-            "@type": "SaleEvent",
-            "@id": "https://warehousewardrobe.com.au/#event-eaubags-jun2026",
-            "name": "Eau Bags Warehouse Sale",
-            "description": "Eau Bags warehouse sale in Paddington, Sydney. Friday 8am–8pm, Saturday 8am–4pm.",
-            "startDate": "2026-06-19T08:00:00+10:00",
-            "endDate": "2026-06-20T16:00:00+10:00",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "location": {
-              "@type": "Place",
-              "name": "410 Oxford St",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "410 Oxford St",
-                "addressLocality": "Paddington",
-                "addressRegion": "NSW",
-                "postalCode": "2021",
-                "addressCountry": "AU"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": -33.8844,
-                "longitude": 151.2278
-              }
-            },
-            "organizer": {
-              "@type": "Organization",
-              "name": "Eau Bags"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "AUD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://warehousewardrobe.com.au"
-            },
-            "url": "https://warehousewardrobe.com.au",
-            "publisher": {
-              "@type": "Person",
-              "name": "Warehouse Wardrobe",
-              "url": "https://warehousewardrobe.com.au"
-            }
-          }
-        },
-
-        {
-          "@type": "ListItem",
-          "position": 5,
-          "item": {
-            "@type": "SaleEvent",
-            "@id": "https://warehousewardrobe.com.au/#event-showpo-jun2026",
-            "name": "Showpo Warehouse Sale",
-            "description": "Showpo warehouse sale in Chullora, Sydney. Saturday 9am–4pm, Sunday 9am–2pm. Enter via Rookwood Road.",
-            "startDate": "2026-06-20T09:00:00+10:00",
-            "endDate": "2026-06-21T14:00:00+10:00",
-            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "location": {
-              "@type": "Place",
-              "name": "Building 3, 203 Rookwood Road",
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Building 3, 203 Rookwood Road",
-                "addressLocality": "Chullora",
-                "addressRegion": "NSW",
-                "postalCode": "2190",
-                "addressCountry": "AU"
-              },
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": -33.8958,
-                "longitude": 151.0515
-              }
-            },
-            "organizer": {
-              "@type": "Organization",
-              "name": "Showpo"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "AUD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://warehousewardrobe.com.au"
-            },
-            "url": "https://warehousewardrobe.com.au",
-            "publisher": {
-              "@type": "Person",
-              "name": "Warehouse Wardrobe",
-              "url": "https://warehousewardrobe.com.au"
-            }
-          }
-        },
-
-        {
-          "@type": "ListItem",
-          "position": 6,
-          "item": {
-            "@type": "SaleEvent",
-            "@id": "https://warehousewardrobe.com.au/#event-nagnata-jun2026",
-            "name": "Nagnata Archive Sale",
-            "description": "Nagnata archive sale — online only. Shop discounted Nagnata pieces at nagnata.com.",
-            "startDate": "2026-06-17",
-            "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
-            "eventStatus": "https://schema.org/EventScheduled",
-            "isAccessibleForFree": true,
-            "location": {
-              "@type": "VirtualLocation",
-              "url": "https://www.nagnata.com"
-            },
-            "organizer": {
-              "@type": "Organization",
-              "name": "Nagnata",
-              "url": "https://www.nagnata.com"
-            },
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "AUD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://www.nagnata.com"
-            },
-            "url": "https://warehousewardrobe.com.au",
-            "publisher": {
-              "@type": "Person",
-              "name": "Warehouse Wardrobe",
-              "url": "https://warehousewardrobe.com.au"
-            }
-          }
-        }
-
-      ]
-    }
-
-  ]
+  "@graph": []
 }
 </script>
+<!-- JSONLD:END -->
 </head>
 
 <body>
@@ -611,8 +286,8 @@ tailwind.config = {
       <!-- Floating card -->
       <div class="absolute -bottom-6 -left-10 bg-surface p-5 rounded-xl shadow-[0_24px_48px_-8px_rgba(28,27,27,0.09)] max-w-[200px]">
         <p class="font-label text-[8px] uppercase tracking-widest text-primary mb-2">This Week</p>
-        <p class="font-headline text-lg italic text-on-surface leading-tight">Frank Green</p>
-        <p class="font-body text-[11px] text-secondary mt-2">19-21 Jun · Alexandria NSW</p>
+        <p class="font-headline text-lg italic text-on-surface leading-tight">Eliya The Label</p>
+        <p class="font-body text-[11px] text-secondary mt-2">11-14 Jun · Armadale VIC</p>
       </div>
     </div>
   </div>
@@ -660,18 +335,19 @@ tailwind.config = {
     </div>
 
     <div class="flex flex-col gap-0 reveal reveal-delay-1">
+      <!-- EVENTS:START -->
 
-      <!-- Event 1 - Nookie -->
+      <!-- Event 1 - Glue Closing Down Sale -->
       <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
         class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
         <div class="flex items-center gap-10 md:gap-16">
           <div class="text-center min-w-[52px]">
-            <span class="block font-headline text-3xl text-primary">17-20</span>
+            <span class="block font-headline text-3xl text-primary">11-14</span>
             <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Jun</span>
           </div>
           <div>
-            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Nookie</h4>
-            <p class="font-body text-sm text-secondary mt-0.5">16-22 Dick St, Chippendale Sydney · Wed-Thu 8am-8pm · Fri-Sat 9am-5pm</p>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Glue Closing Down Sale <span class="font-body text-base text-primary not-italic">Nothing over $80</span></h4>
+            <p class="font-body text-sm text-secondary mt-0.5">QVB, 42/455 George St, Sydney &amp; online · Thu 9am-9pm · Fri-Sat 9am-7pm · Sun 10am-6pm</p>
           </div>
         </div>
         <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
@@ -682,17 +358,17 @@ tailwind.config = {
 
       <div class="h-px bg-outline-variant/30 mx-6"></div>
 
-      <!-- Event 2 - Frank Green -->
+      <!-- Event 2 - Saardé x Inartisan -->
       <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
         class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
         <div class="flex items-center gap-10 md:gap-16">
           <div class="text-center min-w-[52px]">
-            <span class="block font-headline text-3xl text-primary">19-21</span>
+            <span class="block font-headline text-3xl text-primary">11-14</span>
             <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Jun</span>
           </div>
           <div>
-            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Frank Green</h4>
-            <p class="font-body text-sm text-secondary mt-0.5">The Venue, 55 Doody St, Alexandria NSW · Fri-Sat 8am-8pm · Sun 9am-7pm</p>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Saardé x Inartisan <span class="font-body text-base text-primary not-italic">70% off</span></h4>
+            <p class="font-body text-sm text-secondary mt-0.5">410 Oxford St, Paddington · Thu-Fri 10am-6pm · Sat 10am-5pm · Sun 10am-3pm</p>
           </div>
         </div>
         <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
@@ -703,17 +379,17 @@ tailwind.config = {
 
       <div class="h-px bg-outline-variant/30 mx-6"></div>
 
-      <!-- Event 3 - Peta + Jain -->
+      <!-- Event 3 - Serenade Leather -->
       <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
         class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
         <div class="flex items-center gap-10 md:gap-16">
           <div class="text-center min-w-[52px]">
-            <span class="block font-headline text-3xl text-primary">19-21</span>
+            <span class="block font-headline text-3xl text-primary">11-13</span>
             <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Jun</span>
           </div>
           <div>
-            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Peta + Jain</h4>
-            <p class="font-body text-sm text-secondary mt-0.5">Unit 1, 12 Lord St, Botany NSW · Fri-Sun 9am-4pm</p>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Serenade Leather <span class="font-body text-base text-primary not-italic">Up to 75% off</span></h4>
+            <p class="font-body text-sm text-secondary mt-0.5">Unit 1, 86-92 Milperra Rd, Revesby NSW · Thu 12-7pm · Fri-Sat 10am-4pm</p>
           </div>
         </div>
         <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
@@ -724,17 +400,17 @@ tailwind.config = {
 
       <div class="h-px bg-outline-variant/30 mx-6"></div>
 
-      <!-- Event 4 - Eau Bags -->
+      <!-- Event 4 - Eliya the Label -->
       <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
         class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
         <div class="flex items-center gap-10 md:gap-16">
           <div class="text-center min-w-[52px]">
-            <span class="block font-headline text-3xl text-primary">19-20</span>
+            <span class="block font-headline text-3xl text-primary">11-14</span>
             <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Jun</span>
           </div>
           <div>
-            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Eau Bags</h4>
-            <p class="font-body text-sm text-secondary mt-0.5">410 Oxford St, Paddington · Fri 8am-8pm · Sat 8am-4pm</p>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Eliya the Label <span class="font-body text-base text-primary not-italic">$30-$250</span></h4>
+            <p class="font-body text-sm text-secondary mt-0.5">935 High St, Armadale VIC</p>
           </div>
         </div>
         <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
@@ -745,17 +421,17 @@ tailwind.config = {
 
       <div class="h-px bg-outline-variant/30 mx-6"></div>
 
-      <!-- Event 5 - Showpo -->
+      <!-- Event 5 - GMS Collective -->
       <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
         class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
         <div class="flex items-center gap-10 md:gap-16">
           <div class="text-center min-w-[52px]">
-            <span class="block font-headline text-3xl text-primary">20-21</span>
+            <span class="block font-headline text-3xl text-primary">11-14</span>
             <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Jun</span>
           </div>
           <div>
-            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Showpo</h4>
-            <p class="font-body text-sm text-secondary mt-0.5">Building 3, 203 Rookwood Rd, Chullora Sydney (entrance via Rookwood Rd) · Sat 9am-4pm · Sun 9am-2pm</p>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">GMS Collective <span class="font-body text-base text-primary not-italic">70% off</span></h4>
+            <p class="font-body text-sm text-secondary mt-0.5">6A Barkly Ave, Armadale VIC · Thu 12-6pm · Fri 10am-6pm · Sat 10am-5pm · Sun 10am-3pm</p>
           </div>
         </div>
         <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
@@ -766,21 +442,21 @@ tailwind.config = {
 
       <div class="h-px bg-outline-variant/30 mx-6"></div>
 
-      <!-- Event 6 - Nagnata Archive Sale (online) -->
-      <a href="https://www.nagnata.com" target="_blank" rel="noopener noreferrer"
+      <!-- Event 6 - Linen House -->
+      <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
         class="event-row group flex flex-col md:flex-row md:items-center justify-between px-6 py-7 rounded-xl cursor-pointer">
         <div class="flex items-center gap-10 md:gap-16">
           <div class="text-center min-w-[52px]">
-            <span class="block font-headline text-3xl text-primary">Now</span>
-            <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Online</span>
+            <span class="block font-headline text-3xl text-primary">11-14</span>
+            <span class="block font-label text-[9px] uppercase tracking-widest text-secondary">Jun</span>
           </div>
           <div>
-            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Nagnata <span class="font-body text-base text-primary not-italic">Archive Sale</span></h4>
-            <p class="font-body text-sm text-secondary mt-0.5">Online only · nagnata.com</p>
+            <h4 class="event-title font-headline text-2xl text-on-surface transition-all">Linen House</h4>
+            <p class="font-body text-sm text-secondary mt-0.5">60 Corporate Dr, Heatherton VIC · 9am-4pm daily</p>
           </div>
         </div>
         <div class="mt-4 md:mt-0 flex items-center gap-4 pl-[92px] md:pl-0">
-          <span class="chip chip-public">Online</span>
+          <span class="chip chip-free">Free Entry</span>
           <span class="material-symbols-outlined text-primary transition-transform group-hover:translate-x-1" style="font-size:18px;">arrow_forward</span>
         </div>
       </a>
@@ -788,6 +464,7 @@ tailwind.config = {
       <div class="h-px bg-outline-variant/30 mx-6"></div>
     </div>
 
+      <!-- EVENTS:END -->
     <div class="mt-10 text-center reveal reveal-delay-2">
       <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener" class="font-label text-[10px] uppercase tracking-widest text-primary border-b border-primary/30 pb-0.5 hover:border-primary transition-colors">
         Follow on Instagram for live updates →
