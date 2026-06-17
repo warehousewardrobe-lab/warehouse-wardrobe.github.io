@@ -15,15 +15,12 @@ import urllib.request
 import urllib.error
 
 # ── Config ────────────────────────────────────────────────────────────
-API_KEY    = os.environ["GEMINI_API_KEY"]
+API_KEY    = os.environ["ANTHROPIC_API_KEY"]
 SALES_TEXT = os.environ["SALES_TEXT"]
 INDEX_FILE = "index.html"
-MODEL      = "gemini-2.0-flash"   # free tier model
+MODEL      = "claude-haiku-4-5-20251001"  # fast + cheap — ~$0.01 per weekly run
 
-GEMINI_URL = (
-    f"https://generativelanguage.googleapis.com/v1beta/models/"
-    f"{MODEL}:generateContent?key={API_KEY}"
-)
+CLAUDE_URL = "https://api.anthropic.com/v1/messages"
 
 # Markers that wrap the replaceable blocks in index.html
 EVENTS_START = "<!-- EVENTS:START -->"
@@ -96,60 +93,38 @@ SALES LIST
 """.strip()
 
 
-# ── Call Gemini ───────────────────────────────────────────────────────
-def call_gemini(sales_text: str) -> dict:
-    import time
-
+# ── Call Claude ───────────────────────────────────────────────────────
+def call_claude(sales_text: str) -> dict:
     payload = json.dumps({
-        "contents": [
-            {
-                "parts": [
-                    {"text": PROMPT + "\n\n" + sales_text}
-                ]
-            }
-        ],
-        "generationConfig": {
-            "temperature": 0.1,          # low temp = consistent structured output
-            "maxOutputTokens": 4096,
-            "responseMimeType": "application/json"  # ask Gemini to return raw JSON
-        }
+        "model": MODEL,
+        "max_tokens": 4096,
+        "system": "You are a code generator. Return only the JSON object requested — no explanation, no markdown fences, no extra text.",
+        "messages": [
+            {"role": "user", "content": PROMPT + "\n\n" + sales_text}
+        ]
     }).encode()
 
-    max_retries = 5
-    wait = 15  # seconds — doubles each retry: 15 → 30 → 60 → 120s
+    req = urllib.request.Request(
+        CLAUDE_URL,
+        data=payload,
+        headers={
+            "Content-Type":      "application/json",
+            "x-api-key":         API_KEY,
+            "anthropic-version": "2023-06-01",
+        },
+        method="POST"
+    )
 
-    for attempt in range(1, max_retries + 1):
-        req = urllib.request.Request(
-            GEMINI_URL,
-            data=payload,
-            headers={"Content-Type": "application/json"},
-            method="POST"
-        )
-        try:
-            with urllib.request.urlopen(req) as resp:
-                body = json.loads(resp.read())
+    with urllib.request.urlopen(req) as resp:
+        body = json.loads(resp.read())
 
-            # Extract text from Gemini response structure
-            raw_text = body["candidates"][0]["content"]["parts"][0]["text"].strip()
+    raw_text = body["content"][0]["text"].strip()
 
-            # Strip markdown fences if present
-            raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
-            raw_text = re.sub(r"\s*```$",          "", raw_text)
+    # Strip markdown fences if present
+    raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
+    raw_text = re.sub(r"\s*```$",          "", raw_text)
 
-            return json.loads(raw_text)
-
-        except urllib.error.HTTPError as e:
-            if e.code == 429:
-                if attempt == max_retries:
-                    raise RuntimeError(
-                        f"Gemini rate limit hit {max_retries} times in a row. "
-                        "Wait a minute and re-run the workflow."
-                    ) from e
-                print(f"  Rate limited (429) — waiting {wait}s before retry {attempt}/{max_retries}…")
-                time.sleep(wait)
-                wait *= 2  # exponential backoff
-            else:
-                raise
+    return json.loads(raw_text)
 
 
 # ── Patch index.html ──────────────────────────────────────────────────
@@ -174,8 +149,8 @@ def main():
     with open(INDEX_FILE, "r", encoding="utf-8") as f:
         html = f.read()
 
-    print("Calling Gemini API…")
-    result = call_gemini(SALES_TEXT)
+    print("Calling Claude API…")
+    result = call_claude(SALES_TEXT)
 
     print("Patching event rows…")
     html = patch_between(html, EVENTS_START, EVENTS_END, result["HTML_EVENTS"])

@@ -24,7 +24,7 @@ jobs:
       # 2. Call Gemini API to generate the HTML + JSON-LD
       - name: Generate HTML from sales text
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           SALES_TEXT: ${{ github.event.inputs.sales_text }}
         run: |
           python3 update_site.py
