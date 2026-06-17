@@ -2,7 +2,7 @@
 """
 update_site.py
 Called by the GitHub Action. Reads the raw sales text from the
-SALES_TEXT environment variable, asks Gemini to generate:
+SALES_TEXT environment variable, asks Claude to generate:
   1. The HTML event rows  (replaces the events block in index.html)
   2. A fresh JSON-LD block (replaces the existing ld+json script tag)
 Then patches index.html in place.
@@ -97,7 +97,7 @@ SALES LIST
 def call_claude(sales_text: str) -> dict:
     payload = json.dumps({
         "model": MODEL,
-        "max_tokens": 4096,
+        "max_tokens": 8192,
         "system": "You are a code generator. Return only the JSON object requested — no explanation, no markdown fences, no extra text.",
         "messages": [
             {"role": "user", "content": PROMPT + "\n\n" + sales_text}
@@ -118,13 +118,28 @@ def call_claude(sales_text: str) -> dict:
     with urllib.request.urlopen(req) as resp:
         body = json.loads(resp.read())
 
+    # Check the response wasn't cut off
+    stop_reason = body.get("stop_reason", "")
+    if stop_reason == "max_tokens":
+        raise RuntimeError(
+            "Claude's response was cut off (hit max_tokens). "
+            "This shouldn't happen with 8192 tokens — check your sales list isn't unusually long."
+        )
+
     raw_text = body["content"][0]["text"].strip()
 
     # Strip markdown fences if present
     raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
     raw_text = re.sub(r"\s*```$",          "", raw_text)
 
-    return json.loads(raw_text)
+    try:
+        return json.loads(raw_text)
+    except json.JSONDecodeError as e:
+        # Print what Claude actually returned so you can debug
+        print("── Claude raw response (first 2000 chars) ──")
+        print(raw_text[:2000])
+        print("────────────────────────────────────────────")
+        raise RuntimeError(f"JSON parse failed: {e}") from e
 
 
 # ── Patch index.html ──────────────────────────────────────────────────
