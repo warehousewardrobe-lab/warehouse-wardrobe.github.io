@@ -12,6 +12,7 @@ import os
 import re
 import json
 import urllib.request
+import urllib.error
 
 # ── Config ────────────────────────────────────────────────────────────
 API_KEY    = os.environ["GEMINI_API_KEY"]
@@ -97,6 +98,8 @@ SALES LIST
 
 # ── Call Gemini ───────────────────────────────────────────────────────
 def call_gemini(sales_text: str) -> dict:
+    import time
+
     payload = json.dumps({
         "contents": [
             {
@@ -112,24 +115,41 @@ def call_gemini(sales_text: str) -> dict:
         }
     }).encode()
 
-    req = urllib.request.Request(
-        GEMINI_URL,
-        data=payload,
-        headers={"Content-Type": "application/json"},
-        method="POST"
-    )
+    max_retries = 5
+    wait = 15  # seconds — doubles each retry: 15 → 30 → 60 → 120s
 
-    with urllib.request.urlopen(req) as resp:
-        body = json.loads(resp.read())
+    for attempt in range(1, max_retries + 1):
+        req = urllib.request.Request(
+            GEMINI_URL,
+            data=payload,
+            headers={"Content-Type": "application/json"},
+            method="POST"
+        )
+        try:
+            with urllib.request.urlopen(req) as resp:
+                body = json.loads(resp.read())
 
-    # Extract text from Gemini response structure
-    raw_text = body["candidates"][0]["content"]["parts"][0]["text"].strip()
+            # Extract text from Gemini response structure
+            raw_text = body["candidates"][0]["content"]["parts"][0]["text"].strip()
 
-    # Strip markdown fences if present
-    raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
-    raw_text = re.sub(r"\s*```$",          "", raw_text)
+            # Strip markdown fences if present
+            raw_text = re.sub(r"^```(?:json)?\s*", "", raw_text)
+            raw_text = re.sub(r"\s*```$",          "", raw_text)
 
-    return json.loads(raw_text)
+            return json.loads(raw_text)
+
+        except urllib.error.HTTPError as e:
+            if e.code == 429:
+                if attempt == max_retries:
+                    raise RuntimeError(
+                        f"Gemini rate limit hit {max_retries} times in a row. "
+                        "Wait a minute and re-run the workflow."
+                    ) from e
+                print(f"  Rate limited (429) — waiting {wait}s before retry {attempt}/{max_retries}…")
+                time.sleep(wait)
+                wait *= 2  # exponential backoff
+            else:
+                raise
 
 
 # ── Patch index.html ──────────────────────────────────────────────────
