@@ -185,6 +185,339 @@ tailwind.config = {
   .chip-public { background: rgba(0,89,107,0.1); color: #00404e; }
   .chip-free { background: rgba(0,89,107,0.1); color: #00404e; }
 </style>
+
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  WAREHOUSE WARDROBE — JSON-LD STRUCTURED DATA
+  Paste this block inside the <head> of your index.html,
+  just before the closing </head> tag.
+  Update weekly when events change.
+  ═══════════════════════════════════════════════════════════════════
+-->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "WebSite",
+      "@id": "https://warehousewardrobe.com.au/#website",
+      "url": "https://warehousewardrobe.com.au",
+      "name": "Warehouse Wardrobe",
+      "description": "Australia's digital curator of warehouse fashion sales, pop-up events and archive drops. Updated weekly.",
+      "publisher": {
+        "@type": "Person",
+        "name": "Warehouse Wardrobe",
+        "url": "https://warehousewardrobe.com.au"
+      },
+      "sameAs": [
+        "https://www.instagram.com/warehouse.wardrobe",
+        "https://www.tiktok.com/@warehouse.wardrobe"
+      ]
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://warehousewardrobe.com.au/#events-this-week",
+      "name": "Warehouse Sales This Week — Australia (17–21 June 2026)",
+      "description": "Current warehouse fashion sales, pop-up events and archive drops happening across Australia this week.",
+      "numberOfItems": 6,
+      "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "SaleEvent",
+            "@id": "https://warehousewardrobe.com.au/#event-nookie-jun2026",
+            "name": "Nookie Warehouse Sale",
+            "description": "Nookie warehouse sale in Chippendale, Sydney. Open Wednesday to Saturday.",
+            "startDate": "2026-06-17T08:00:00+10:00",
+            "endDate": "2026-06-20T17:00:00+10:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "location": {
+              "@type": "Place",
+              "name": "Nookie — 16–22 Dick St",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "16–22 Dick St",
+                "addressLocality": "Chippendale",
+                "addressRegion": "NSW",
+                "postalCode": "2008",
+                "addressCountry": "AU"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -33.8882,
+                "longitude": 151.1986
+              }
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "Nookie"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "AUD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://warehousewardrobe.com.au"
+            },
+            "url": "https://warehousewardrobe.com.au",
+            "image": "https://warehousewardrobe.com.au/media/cover-photo.png",
+            "publisher": {
+              "@type": "Person",
+              "name": "Warehouse Wardrobe",
+              "url": "https://warehousewardrobe.com.au"
+            }
+          }
+        },
+
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SaleEvent",
+            "@id": "https://warehousewardrobe.com.au/#event-frankgreen-jun2026",
+            "name": "Frank Green Warehouse Sale",
+            "description": "Frank Green warehouse sale at The Venue in Alexandria, Sydney. Open Friday to Sunday.",
+            "startDate": "2026-06-19T08:00:00+10:00",
+            "endDate": "2026-06-21T19:00:00+10:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "location": {
+              "@type": "Place",
+              "name": "The Venue, 55 Doody St",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "55 Doody St",
+                "addressLocality": "Alexandria",
+                "addressRegion": "NSW",
+                "postalCode": "2015",
+                "addressCountry": "AU"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -33.9148,
+                "longitude": 151.1952
+              }
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "Frank Green"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "AUD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://warehousewardrobe.com.au"
+            },
+            "url": "https://warehousewardrobe.com.au",
+            "publisher": {
+              "@type": "Person",
+              "name": "Warehouse Wardrobe",
+              "url": "https://warehousewardrobe.com.au"
+            }
+          }
+        },
+
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SaleEvent",
+            "@id": "https://warehousewardrobe.com.au/#event-petajain-jun2026",
+            "name": "Peta + Jain Warehouse Sale",
+            "description": "Peta + Jain warehouse sale in Botany, Sydney. Open Friday to Sunday 9am–4pm.",
+            "startDate": "2026-06-19T09:00:00+10:00",
+            "endDate": "2026-06-21T16:00:00+10:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "location": {
+              "@type": "Place",
+              "name": "Unit 1, 12 Lord St",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Unit 1, 12 Lord St",
+                "addressLocality": "Botany",
+                "addressRegion": "NSW",
+                "postalCode": "2019",
+                "addressCountry": "AU"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -33.9493,
+                "longitude": 151.2003
+              }
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "Peta + Jain"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "AUD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://warehousewardrobe.com.au"
+            },
+            "url": "https://warehousewardrobe.com.au",
+            "publisher": {
+              "@type": "Person",
+              "name": "Warehouse Wardrobe",
+              "url": "https://warehousewardrobe.com.au"
+            }
+          }
+        },
+
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "SaleEvent",
+            "@id": "https://warehousewardrobe.com.au/#event-eaubags-jun2026",
+            "name": "Eau Bags Warehouse Sale",
+            "description": "Eau Bags warehouse sale in Paddington, Sydney. Friday 8am–8pm, Saturday 8am–4pm.",
+            "startDate": "2026-06-19T08:00:00+10:00",
+            "endDate": "2026-06-20T16:00:00+10:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "location": {
+              "@type": "Place",
+              "name": "410 Oxford St",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "410 Oxford St",
+                "addressLocality": "Paddington",
+                "addressRegion": "NSW",
+                "postalCode": "2021",
+                "addressCountry": "AU"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -33.8844,
+                "longitude": 151.2278
+              }
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "Eau Bags"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "AUD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://warehousewardrobe.com.au"
+            },
+            "url": "https://warehousewardrobe.com.au",
+            "publisher": {
+              "@type": "Person",
+              "name": "Warehouse Wardrobe",
+              "url": "https://warehousewardrobe.com.au"
+            }
+          }
+        },
+
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "SaleEvent",
+            "@id": "https://warehousewardrobe.com.au/#event-showpo-jun2026",
+            "name": "Showpo Warehouse Sale",
+            "description": "Showpo warehouse sale in Chullora, Sydney. Saturday 9am–4pm, Sunday 9am–2pm. Enter via Rookwood Road.",
+            "startDate": "2026-06-20T09:00:00+10:00",
+            "endDate": "2026-06-21T14:00:00+10:00",
+            "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "location": {
+              "@type": "Place",
+              "name": "Building 3, 203 Rookwood Road",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Building 3, 203 Rookwood Road",
+                "addressLocality": "Chullora",
+                "addressRegion": "NSW",
+                "postalCode": "2190",
+                "addressCountry": "AU"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": -33.8958,
+                "longitude": 151.0515
+              }
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "Showpo"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "AUD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://warehousewardrobe.com.au"
+            },
+            "url": "https://warehousewardrobe.com.au",
+            "publisher": {
+              "@type": "Person",
+              "name": "Warehouse Wardrobe",
+              "url": "https://warehousewardrobe.com.au"
+            }
+          }
+        },
+
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "SaleEvent",
+            "@id": "https://warehousewardrobe.com.au/#event-nagnata-jun2026",
+            "name": "Nagnata Archive Sale",
+            "description": "Nagnata archive sale — online only. Shop discounted Nagnata pieces at nagnata.com.",
+            "startDate": "2026-06-17",
+            "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+            "eventStatus": "https://schema.org/EventScheduled",
+            "isAccessibleForFree": true,
+            "location": {
+              "@type": "VirtualLocation",
+              "url": "https://www.nagnata.com"
+            },
+            "organizer": {
+              "@type": "Organization",
+              "name": "Nagnata",
+              "url": "https://www.nagnata.com"
+            },
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "AUD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://www.nagnata.com"
+            },
+            "url": "https://warehousewardrobe.com.au",
+            "publisher": {
+              "@type": "Person",
+              "name": "Warehouse Wardrobe",
+              "url": "https://warehousewardrobe.com.au"
+            }
+          }
+        }
+
+      ]
+    }
+
+  ]
+}
+</script>
 </head>
 
 <body>

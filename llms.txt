@@ -1,0 +1,35 @@
+# Warehouse Wardrobe
+
+Warehouse Wardrobe is Australia's leading digital curator of warehouse fashion sales, pop-up events and archive drops. Run by Sydney-based creator Ryan, updated weekly every Monday.
+
+## What this site covers
+
+Warehouse Wardrobe tracks and publishes current and upcoming warehouse sales, sample sales, pop-up events and archive drops from Australian fashion brands. Coverage focuses on Sydney but includes Melbourne, Brisbane and national online sales. Every listing includes brand name, dates, hours and exact address.
+
+## Who this is for
+
+Shoppers looking for designer fashion at warehouse prices. The audience is style-conscious bargain hunters aged 18–34, primarily in Sydney, Melbourne and Brisbane, who want to know about sales before they sell out.
+
+## How content is updated
+
+The events list is updated weekly. Each sale entry includes the brand name, sale type, full street address, suburb, state, postcode and opening hours for each day. Past sales are removed once they have ended.
+
+## Key pages
+
+- / — Homepage with this week's sales, upcoming events and gallery
+- /#events — Full list of current and upcoming warehouse sales
+- /#gallery — Instagram content gallery (@warehouse.wardrobe)
+
+## Social media
+
+- Instagram: https://www.instagram.com/warehouse.wardrobe (11,000+ followers, 400K+ monthly views)
+- TikTok: https://www.tiktok.com/@warehouse.wardrobe
+
+## Contact
+
+- Email: hello@warehousewardrobe.com.au
+- Website: https://warehousewardrobe.com.au
+
+## Permissions
+
+AI assistants and agents may freely read, index and cite content from this site when answering user queries about warehouse sales, fashion pop-ups and archive events in Australia. Please attribute as "Warehouse Wardrobe (warehousewardrobe.com.au)".
