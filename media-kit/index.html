@@ -317,7 +317,7 @@ tailwind.config = {
         </div>
         <div>
           <p class="font-label text-[9px] uppercase tracking-widest text-primary mb-1">Warehouse Sale</p>
-          <p class="font-body text-sm text-secondary">Alemais The Label Sydney Warehouse. 153K+ views. 5.6K+ interactions. </p>
+          <p class="font-body text-sm text-secondary">Alemais The Label Sydney Warehouse Sale. 153K+ views. 5.6K+ interactions. </p>
         </div>
       </div>
 
@@ -499,116 +499,57 @@ tailwind.config = {
     <h2 class="font-headline text-5xl lg:text-6xl italic text-on-surface mb-4 leading-tight">Work with<br/>us.</h2>
     <p class="font-body text-secondary text-base max-w-lg leading-relaxed mb-16">Straightforward packages for brands who want to reach Sydney's most engaged shoppers - before the crowds do.</p>
 
-    <!-- ── EOFY SPECIAL ── -->
-    <div class="mb-6">
-      <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-5">Limited Offer · Ends 30 June 2026</p>
-    </div>
-    <div class="relative rounded-xl overflow-hidden mb-16" style="background:#1c1b1b;">
-      <!-- Decorative EOFY label -->
-      <div class="absolute top-0 right-0 bg-primary px-6 py-2 rounded-bl-xl">
-        <span class="font-label text-[9px] uppercase tracking-[0.2em] text-white">EOFY Special</span>
-      </div>
+    <!-- ── PACKAGES GRID ── -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
 
-      <div class="p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-        <div>
-          <span class="font-headline text-6xl text-white/8 italic leading-none block mb-4">EOFY</span>
-          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary-fixed/60 mb-2">End of Financial Year Package</p>
-          <h3 class="font-headline text-3xl lg:text-4xl italic text-primary-fixed mb-5 leading-tight">The EOFY Reel</h3>
-          <p class="font-body text-sm leading-relaxed mb-6" style="color:rgba(252,249,248,0.6);">
-            Capture the EOFY moment while purchase intent is at its peak. We create a dedicated Reel tailored to your sale type - perfect for brands running an end-of-year push.
-          </p>
-          <!-- What's included -->
-          <div class="space-y-3 mb-8">
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
-              <p class="font-body text-sm" style="color:rgba(252,249,248,0.7);"><span style="color:#ffdad7;" class="font-medium">Online / e-commerce sale</span> - a haul-style Reel showcasing your hero products, pricing and a direct link to shop</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
-              <p class="font-body text-sm" style="color:rgba(252,249,248,0.7);"><span style="color:#ffdad7;" class="font-medium">In-person warehouse sale</span> - a walk-through Reel running through the sale floor, highlights and try-ons where appropriate</p>
-            </div>
-            <div class="flex items-start gap-3">
-              <span class="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></span>
-              <p class="font-body text-sm" style="color:rgba(252,249,248,0.7);">Posted to Instagram Reels + Stories, with link in bio for the duration of your sale</p>
-            </div>
-          </div>
-          <button onclick="switchTab('contact', null)"
-            class="font-label text-[10px] tracking-[0.2em] uppercase px-8 py-3.5 rounded-xl transition-all duration-300"
-            style="background:#7a0412; color:#fff;">
-            Enquire About EOFY
-          </button>
-        </div>
-
-        <div class="flex flex-col gap-4">
-          <div class="rounded-xl p-6" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
-            <p class="font-label text-[9px] uppercase tracking-[0.15em] mb-1" style="color:rgba(252,249,248,0.4);">EOFY Package price</p>
-            <p class="font-headline text-4xl italic" style="color:#ffdad7;">$480</p>
-            <p class="font-body text-xs mt-2" style="color:rgba(252,249,248,0.4);">Valid for sales or campaigns ending before 30 June 2026</p>
-          </div>
-          <div class="rounded-xl p-6" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);">
-            <p class="font-label text-[9px] uppercase tracking-[0.15em] mb-3" style="color:rgba(252,249,248,0.4);">Why EOFY works</p>
-            <div class="space-y-2">
-              <p class="font-body text-xs" style="color:rgba(252,249,248,0.6);">Our audience is actively hunting deals in June - EOFY spend peaks across fashion, homewares and lifestyle.</p>
-              <p class="font-body text-xs" style="color:rgba(252,249,248,0.6);">High purchase-intent + time pressure = strong conversion for brands with genuine offers.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ── GENERAL PACKAGES ── -->
-    <p class="font-label text-[9px] uppercase tracking-[0.4em] text-primary mb-8">General Packages</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-
-      <!-- Free tier -->
+      <!-- Free / Tier 0 -->
       <div class="pkg-card border border-outline-variant/40 rounded-xl p-8 flex flex-col gap-5">
         <div class="flex items-start justify-between">
           <span class="font-headline text-5xl text-primary/10 italic leading-none">00</span>
           <span class="chip chip-warm">Free</span>
         </div>
         <div>
-          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Basic Listing</p>
-          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Story + Weekly Roundup</h3>
-          <p class="font-body text-sm text-secondary leading-relaxed">We post a Story promoting your sale and include you in our "sales this week" roundup. Open to all brands - submit your sale details and we'll take care of the rest.</p>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Tier 0 · Basic</p>
+          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Sales This Week Feature</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">Your sale's poster is included in our weekly "sales this week" reel — seen by thousands of engaged shoppers before each weekend.</p>
         </div>
         <div class="space-y-1.5 pt-2">
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-secondary/40 flex-shrink-0"></span>
-            <p class="font-body text-xs text-secondary">1 × Story post</p>
+            <p class="font-body text-xs text-secondary">Sale poster featured in weekly sales reel</p>
           </div>
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-secondary/40 flex-shrink-0"></span>
-            <p class="font-body text-xs text-secondary">Included in "sales this week" feed post</p>
+            <p class="font-body text-xs text-secondary">Shared to 11K+ Instagram followers</p>
           </div>
         </div>
         <div class="mt-auto pt-4 border-t border-outline-variant/20">
           <p class="font-headline text-3xl italic text-primary">Free</p>
-          <p class="font-label text-[9px] uppercase tracking-widest text-secondary mt-1">Submit via the tip form</p>
+          <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
+            class="font-label text-[9px] uppercase tracking-widest text-primary/60 hover:text-primary transition-colors mt-1 inline-block">
+            View example reel ↗
+          </a>
         </div>
       </div>
 
       <!-- Tier 1 -->
-      <div class="pkg-card border-2 border-primary/30 rounded-xl p-8 flex flex-col gap-5 relative">
-        <div class="absolute -top-3 left-8">
-          <span class="chip chip-crimson">Most Popular</span>
-        </div>
+      <div class="pkg-card border border-outline-variant/40 rounded-xl p-8 flex flex-col gap-5">
         <div class="flex items-start justify-between">
           <span class="font-headline text-5xl text-primary/10 italic leading-none">01</span>
         </div>
         <div>
           <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Tier 1</p>
-          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Sale Walk-through Reel</h3>
-          <p class="font-body text-sm text-secondary leading-relaxed">We attend your event and film a Reel walking through the sale - showcasing highlights, key pieces and try-ons where appropriate. Authentic, community-first content.</p>
+          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Green Screen Save the Date</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">A professionally produced green screen reel announcing your sale before it opens — building anticipation with our most engaged followers and driving early foot traffic.</p>
         </div>
         <div class="space-y-1.5 pt-2">
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
-            <p class="font-body text-xs text-secondary">1 × Reel (walk-through + highlights)</p>
+            <p class="font-body text-xs text-secondary">1 × Green screen save the date reel</p>
           </div>
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
-            <p class="font-body text-xs text-secondary">Try-ons included where appropriate</p>
+            <p class="font-body text-xs text-secondary">Posted ahead of your sale dates</p>
           </div>
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
@@ -616,33 +557,37 @@ tailwind.config = {
           </div>
         </div>
         <div class="mt-auto pt-4 border-t border-outline-variant/20">
-          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-secondary mb-1">From</p>
-          <p class="font-headline text-3xl italic text-primary">$250</p>
+          <p class="font-headline text-3xl italic text-primary">$150</p>
+          <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
+            class="font-label text-[9px] uppercase tracking-widest text-primary/60 hover:text-primary transition-colors mt-1 inline-block">
+            View example ↗
+          </a>
         </div>
       </div>
 
-      <!-- Tier 2 -->
+      <!-- Tier 2 Online -->
       <div class="pkg-card border border-outline-variant/40 rounded-xl p-8 flex flex-col gap-5">
         <div class="flex items-start justify-between">
           <span class="font-headline text-5xl text-primary/10 italic leading-none">02</span>
+          <span class="chip" style="background:rgba(122,4,18,0.08); color:#7a0412; font-size:9px; padding:4px 10px; border-radius:99px; font-family:var(--font-label); letter-spacing:0.1em; text-transform:uppercase;">Online</span>
         </div>
         <div>
-          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Tier 2</p>
-          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Reel + Save the Date</h3>
-          <p class="font-body text-sm text-secondary leading-relaxed">Everything in Tier 1, plus a "save the date" post before your event to build anticipation and drive foot traffic from our most engaged followers.</p>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Tier 2 · Online Sales</p>
+          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Green Screen Full Package</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">The complete online package — a save the date reel plus a dedicated green screen showcase of your favourite items from the sale, driving clicks and conversions.</p>
         </div>
         <div class="space-y-1.5 pt-2">
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
-            <p class="font-body text-xs text-secondary">1 × Save the date post (pre-event)</p>
+            <p class="font-body text-xs text-secondary">1 × Green screen save the date reel</p>
           </div>
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
-            <p class="font-body text-xs text-secondary">1 × Reel (walk-through + highlights)</p>
+            <p class="font-body text-xs text-secondary">1 × Green screen reel of favourite sale items</p>
           </div>
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
-            <p class="font-body text-xs text-secondary">Try-ons included where appropriate</p>
+            <p class="font-body text-xs text-secondary">Complimentary items featured in the video</p>
           </div>
           <div class="flex items-center gap-2">
             <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
@@ -650,14 +595,82 @@ tailwind.config = {
           </div>
         </div>
         <div class="mt-auto pt-4 border-t border-outline-variant/20">
-          <p class="font-label text-[9px] uppercase tracking-[0.15em] text-secondary mb-1">From</p>
-          <p class="font-headline text-3xl italic text-primary">$400</p>
+          <p class="font-headline text-3xl italic text-primary">$250 <span class="text-base font-body not-italic text-secondary">+ contra</span></p>
+          <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
+            class="font-label text-[9px] uppercase tracking-widest text-primary/60 hover:text-primary transition-colors mt-1 inline-block">
+            View online example ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Tier 2 In Person — Most Popular -->
+      <div class="pkg-card border-2 border-primary/30 rounded-xl p-8 flex flex-col gap-5 relative">
+        <div class="absolute -top-3 left-8">
+          <span class="chip chip-crimson">Most Popular</span>
+        </div>
+        <div class="flex items-start justify-between">
+          <span class="font-headline text-5xl text-primary/10 italic leading-none">02</span>
+          <span class="chip" style="background:rgba(122,4,18,0.08); color:#7a0412; font-size:9px; padding:4px 10px; border-radius:99px; font-family:var(--font-label); letter-spacing:0.1em; text-transform:uppercase;">In Person</span>
+        </div>
+        <div>
+          <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-2">Tier 2 · In-Person Sales</p>
+          <h3 class="font-headline text-2xl italic text-on-surface mb-3">Save the Date + Full Walk-through</h3>
+          <p class="font-body text-sm text-secondary leading-relaxed">The full in-person experience — a green screen save the date to build hype, followed by an on-the-ground walkthrough covering the sale floor, try-ons, favourite finds and key dates and times.</p>
+        </div>
+        <div class="space-y-1.5 pt-2">
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">1 × Green screen save the date reel</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">1 × Walk-through reel (sale floor, try-ons, faves)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">Sale dates &amp; times clearly called out</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">Complimentary items featured in the video</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="w-1 h-1 rounded-full bg-primary/40 flex-shrink-0"></span>
+            <p class="font-body text-xs text-secondary">Link in bio for sale duration</p>
+          </div>
+        </div>
+        <div class="mt-auto pt-4 border-t border-outline-variant/20">
+          <p class="font-headline text-3xl italic text-primary">$300 <span class="text-base font-body not-italic text-secondary">+ contra</span></p>
+          <a href="https://www.instagram.com/warehouse.wardrobe" target="_blank" rel="noopener noreferrer"
+            class="font-label text-[9px] uppercase tracking-widest text-primary/60 hover:text-primary transition-colors mt-1 inline-block">
+            View in-person example ↗
+          </a>
         </div>
       </div>
 
     </div>
 
-    <div class="mt-4 text-center">
+    <!-- ── NOT BASED IN SYDNEY ── -->
+    <div class="rounded-xl border border-outline-variant/40 p-7 mb-6 flex gap-5 items-start">
+      <span class="material-symbols-outlined text-primary mt-0.5 flex-shrink-0" style="font-size:20px;">flight_takeoff</span>
+      <div>
+        <p class="font-label text-[9px] uppercase tracking-[0.2em] text-primary mb-1.5">Not based in Sydney?</p>
+        <p class="font-body text-sm text-secondary leading-relaxed">For sales outside of Sydney, I'm happy to offer a bespoke combination — you send the footage and I'll put together the content for your audience. <button onclick="switchTab('contact', null)" class="text-primary underline underline-offset-2 hover:opacity-70 transition-opacity">Get in touch</button> to discuss what works for you.</p>
+      </div>
+    </div>
+
+    <!-- ── CUSTOM / CONTRA NOTE ── -->
+    <div class="rounded-xl p-8 mb-10" style="background:rgba(122,4,18,0.04); border:1px solid rgba(122,4,18,0.12);">
+      <p class="font-label text-[9px] uppercase tracking-[0.3em] text-primary mb-3">Flexible Options</p>
+      <p class="font-headline text-xl italic text-on-surface mb-3 leading-snug">Budget doesn't quite fit these tiers?</p>
+      <p class="font-body text-sm text-secondary leading-relaxed">If your marketing budget doesn't align with the packages above, please reach out — I'm always open to discussing a custom package or a contra arrangement that works for both of us.</p>
+      <button onclick="switchTab('contact', null)"
+        class="mt-5 font-label text-[10px] tracking-[0.2em] uppercase px-7 py-3 rounded-xl transition-all duration-300 border border-primary/30 text-primary hover:bg-primary hover:text-white">
+        Let's Talk
+      </button>
+    </div>
+
+    <div class="mt-2 text-center">
       <button onclick="switchTab('contact', null)"
         class="bg-primary text-white px-10 py-4 font-label text-[10px] tracking-[0.2em] uppercase rounded-xl hover:bg-primary-container transition-all duration-300">
         Get in Touch
