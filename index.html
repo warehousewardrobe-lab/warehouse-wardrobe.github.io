@@ -185,6 +185,29 @@ tailwind.config = {
   .chip-waitlist { background: rgba(106,93,67,0.12); color: #6a5d43; }
   .chip-public { background: rgba(0,89,107,0.1); color: #00404e; }
   .chip-free { background: rgba(0,89,107,0.1); color: #00404e; }
+
+  /* ---------- Seal glow + music ---------- */
+  .seal-glow{position:absolute;left:50%;top:53.6%;width:34%;aspect-ratio:1;z-index:5;pointer-events:none;border-radius:50%;opacity:0;
+    transform:translate(-50%,-50%) scale(.5);
+    background:radial-gradient(circle,rgb(255 248 222 / .95) 0%,rgb(246 222 160 / .6) 32%,rgb(236 200 130 / .18) 55%,rgb(236 200 130 / 0) 70%)}
+  .sparkle{position:absolute;left:50%;top:53.6%;width:var(--s,6px);height:var(--s,6px);margin:calc(var(--s,6px) / -2);z-index:6;pointer-events:none;
+    border-radius:50%;background:#fff8dc;box-shadow:0 0 6px 2px rgb(240 210 140 / .9),0 0 14px 4px rgb(240 210 140 / .45);opacity:0}
+  .sheen{position:absolute;inset:0;z-index:5;pointer-events:none;opacity:0;
+    background:linear-gradient(115deg,transparent 38%,rgb(255 250 232 / .55) 50%,transparent 62%) 130% 0/260% 100% no-repeat}
+  .opened .seal-glow{animation:sealGlow 1.4s ease-out forwards}
+  .opened .sparkle{animation:spark 1.2s cubic-bezier(.2,.7,.3,1) var(--d,0s) forwards}
+  .opened .sheen{animation:sheen 1.1s ease-in-out .15s forwards}
+  @keyframes sealGlow{0%{opacity:0;transform:translate(-50%,-50%) scale(.5)}18%{opacity:1}100%{opacity:0;transform:translate(-50%,-50%) scale(4.2)}}
+  @keyframes spark{0%{opacity:0;transform:translate(0,0) scale(.3)}15%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) scale(1)}}
+  @keyframes sheen{0%{opacity:1;background-position:130% 0}100%{opacity:1;background-position:-30% 0}}
+  .music{position:fixed;z-index:20;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));
+    width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;display:grid;place-items:center;
+    background:var(--ink);color:#f3e4bb;box-shadow:inset 0 0 0 3px var(--ink),inset 0 0 0 4px var(--gold),0 6px 16px rgb(44 50 30 / .3)}
+  .music svg{width:18px;height:18px}
+  .music .off{display:none}
+  .music.paused .on{display:none}
+  .music.paused .off{display:block}
+  @media (prefers-reduced-motion:reduce){.opened .seal-glow,.opened .sparkle,.opened .sheen{animation:none}}
 </style>
 <!-- JSONLD:START -->
 <script type="application/ld+json">
